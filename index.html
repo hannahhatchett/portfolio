@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hannah Hatchett — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-nav">
+    <a href="index.html" class="site-nav-name">Hannah Hatchett</a>
+    <nav class="site-nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="playground.html">Playground</a>
+      <a href="hannah-hatchett-cv.pdf" target="_blank" rel="noopener">CV</a>
+    </nav>
+  </header>
+
+  <main id="home" class="main">
+      <section class="hero reveal" aria-label="Intro">
+        <h2 class="hero-title">
+          All about AI,<br />
+          interaction, humans and<br />
+          <span class="selected-word selected-word-cycler">
+            <span class="selection-handle tl"></span>
+            <span class="selection-handle tr"></span>
+            <span class="selection-handle bl"></span>
+            <span class="selection-handle br"></span>
+            <span class="selected-word-text" aria-live="polite"><em>fun</em></span>
+            <span class="cursor-tag cursor-tag-hero" aria-hidden="true">
+              <svg viewBox="0 0 16 16">
+                <path d="M2 1 L2 13 L5.5 10 L7.8 14.2 L9.6 13.4 L7.3 9.2 L11.5 9.2 Z"
+                      fill="#1a73ff" stroke="#fff" stroke-width="0.8" stroke-linejoin="round" />
+              </svg>
+              <span class="cursor-pill">Hannah</span>
+            </span>
+          </span>
+        </h2>
+      </section>
+
+      <section class="work">
+        <div class="grid">
+
+          <a href="bottle-cap.html" class="card reveal">
+            <div class="card-media card-media-1 card-media-3d">
+              <div class="device-stage" aria-hidden="true">
+                <div class="device">
+                  <div class="device-bar">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="device-screen">
+                    <img src="images/bottlecap-home.png"
+                         alt="Bottle Cap homepage — Welcome to the Neighborhood" />
+                  </div>
+                </div>
+                <div class="device-shadow"></div>
+              </div>
+            </div>
+            <h3 class="card-title">Bottle Cap — Element 47</h3>
+          </a>
+
+          <a href="#" class="card reveal">
+            <div class="card-media card-media-2 card-media-3d">
+              <div class="device-stage" aria-hidden="true">
+                <div class="laptop">
+                  <div class="laptop-screen">
+                    <div class="laptop-display"></div>
+                  </div>
+                  <div class="laptop-base"></div>
+                </div>
+                <div class="device-shadow"></div>
+              </div>
+            </div>
+            <h3 class="card-title">Case study placeholder</h3>
+          </a>
+
+          <a href="#" class="card reveal">
+            <div class="card-media card-media-3 card-media-3d">
+              <div class="device-stage" aria-hidden="true">
+                <div class="tablet">
+                  <div class="tablet-camera"></div>
+                  <div class="tablet-display"></div>
+                </div>
+                <div class="device-shadow"></div>
+              </div>
+            </div>
+            <h3 class="card-title">Case study placeholder</h3>
+          </a>
+
+          <a href="#" class="card reveal">
+            <div class="card-media card-media-4 card-media-3d">
+              <div class="device-stage" aria-hidden="true">
+                <div class="phone">
+                  <div class="phone-notch"></div>
+                  <div class="phone-display"></div>
+                </div>
+                <div class="device-shadow"></div>
+              </div>
+            </div>
+            <h3 class="card-title">Case study placeholder</h3>
+          </a>
+
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© 2026 Hannah Hatchett</span>
+        <span>Seattle, WA</span>
+      </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
