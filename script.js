@@ -33,6 +33,12 @@
   const cycler = document.querySelector(".selected-word-cycler");
   if (cycler) {
     const words = ["fun", "stories", "brand"];
+    // Per-word accent color: pink / green / blue
+    const wordColors = {
+      fun: "255, 77, 141",
+      stories: "34, 197, 94",
+      brand: "26, 115, 255",
+    };
     const textEl = cycler.querySelector(".selected-word-text");
     const emEl = textEl.querySelector("em");
 
@@ -73,12 +79,18 @@
       return Math.ceil(measure.getBoundingClientRect().width) + padX() + italicSlack;
     };
 
+    const applyAccent = (word) => {
+      const rgb = wordColors[word] || wordColors.brand;
+      cycler.style.setProperty("--accent-rgb", rgb);
+    };
+
     const setWord = (word, animate = true) => {
       if (!animate) {
         const prev = cycler.style.transition;
         cycler.style.transition = "none";
         cycler.style.width = widthFor(word) + "px";
         emEl.textContent = word;
+        applyAccent(word);
         // Force reflow then restore transition.
         void cycler.offsetWidth;
         cycler.style.transition = prev;
@@ -86,6 +98,7 @@
       }
       cycler.classList.add("dragging");
       emEl.textContent = word;
+      applyAccent(word);
       cycler.style.width = widthFor(word) + "px";
     };
 
@@ -186,6 +199,47 @@
 
     setActive(0);
   });
+
+  // Cursor-driven tilt for case-study device mocks — each device subtly
+  // rotates toward the visitor's cursor as they move across the page.
+  const tiltDevices = document.querySelectorAll(
+    ".card-media-3d .device, .card-media-3d .laptop, .card-media-3d .tablet, .card-media-3d .phone"
+  );
+  if (
+    tiltDevices.length &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    let raf = null;
+    let mx = 0, my = 0;
+    document.addEventListener(
+      "mousemove",
+      (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          tiltDevices.forEach((device) => {
+            const rect = device.getBoundingClientRect();
+            // Skip offscreen devices
+            if (rect.bottom < -100 || rect.top > window.innerHeight + 100) return;
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+            const dx = mx - cx;
+            const dy = my - cy;
+            const dist = Math.hypot(dx, dy);
+            const maxDist = 700;
+            const intensity = Math.max(0, 1 - dist / maxDist);
+            const tiltY = (-dx / 80) * intensity;
+            const tiltX = (dy / 80) * intensity;
+            device.style.setProperty("--tilt-x", tiltX.toFixed(2) + "deg");
+            device.style.setProperty("--tilt-y", tiltY.toFixed(2) + "deg");
+          });
+          raf = null;
+        });
+      },
+      { passive: true }
+    );
+  }
 
   // Custom cursor — replaces the native pointer with a coral arrow + "me" pill.
   // Skipped on case-study pages so deep-read views keep the standard cursor.
