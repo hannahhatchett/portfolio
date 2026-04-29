@@ -32,12 +32,12 @@
   // Animated selection cycler — Hannah's cursor "drags" the box to fit each word.
   const cycler = document.querySelector(".selected-word-cycler");
   if (cycler) {
-    const words = ["fun", "stories", "brand"];
-    // Per-word accent color: pink / green / blue
+    const words = ["fun", "stories", "art"];
+    // Per-word accent color: pink / green / purple
     const wordColors = {
       fun: "255, 77, 141",
       stories: "34, 197, 94",
-      brand: "26, 115, 255",
+      art: "147, 80, 232",
     };
     const textEl = cycler.querySelector(".selected-word-text");
     const emEl = textEl.querySelector("em");
