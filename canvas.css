@@ -1,0 +1,293 @@
+/* ============================================================
+   Home canvas section — Melius-style Figma node board.
+   Left: a sticky, full-bleed feature image that expands to the
+   active project. Right: a dark, dotted canvas of image "nodes"
+   (label row + orange tag + bordered image) wired together with
+   orange curved connectors. Sits below the existing light hero.
+   ============================================================ */
+
+:root {
+  --cv-bg: #f4f4f1;
+  --cv-panel: #ffffff;
+  --cv-line: rgba(0, 0, 0, 0.12);
+  --cv-ink: #111111;
+  --cv-muted: rgba(0, 0, 0, 0.5);
+  --cv-dot: rgba(0, 0, 0, 0.09);
+  --cv-wire: #ff6b3d;
+  --cv-feature-bg: #ecece8;
+  --nav-h: 62px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+/* ---------- Split: sticky feature + node canvas ---------- */
+.cv-section-wrap { margin-top: 56px; }
+
+.cv-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* Left: rotatable monitor mockup, sticky within the section */
+.cv-feature {
+  position: sticky;
+  top: var(--nav-h);
+  flex: 0 0 48%;
+  height: calc(100vh - var(--nav-h));
+  overflow: hidden;
+  background: var(--cv-feature-bg);
+  transition: background-color 500ms var(--ease);
+}
+.cv-stage3d {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  perspective: 1700px;
+  padding: 22px;
+}
+.cv-device {
+  width: min(97%, 820px);
+  transform-style: preserve-3d;
+  transform: none;
+}
+
+/* Minimal, realistic white desktop display (front-facing) */
+.cv-monitor {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, #ffffff 0%, #edeff2 100%);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 16px;
+  padding: 7px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.05),
+    0 38px 66px -26px rgba(0, 0, 0, 0.34),
+    0 12px 24px -16px rgba(0, 0, 0, 0.18);
+}
+/* Tiny front camera dot centered in the top bezel */
+.cv-monitor-cam {
+  position: absolute;
+  top: 1.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #6a6e75, #26282c);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+.cv-monitor .device-screen {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22);
+}
+
+/* Screenshots stacked inside the device screen, crossfading per active node */
+.cv-shot {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0;
+  transition: opacity 500ms var(--ease);
+}
+.cv-shot.is-active { opacity: 1; }
+.cv-shot.is-mark {
+  display: grid;
+  place-items: center;
+  background: radial-gradient(120% 120% at 30% 20%, #f5f5f3 0%, #e6e6e1 70%);
+}
+.cv-shot.is-mark svg { width: 60px; height: 60px; opacity: 0.5; }
+
+/* Animated browse slot — stacked page frames + a moving cursor */
+.cv-anim {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 500ms var(--ease);
+}
+.cv-anim.is-active { opacity: 1; }
+.cv-frame-img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0;
+  transition: opacity 550ms var(--ease);
+  will-change: transform, object-position, opacity;
+  backface-visibility: hidden;
+}
+.cv-frame-img.on { opacity: 1; }
+.cv-cursor {
+  position: absolute;
+  top: 0; left: 0;
+  width: 22px; height: 22px;
+  z-index: 6;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-100px, -100px);
+  transition: transform 750ms cubic-bezier(0.45, 0, 0.15, 1), opacity 300ms var(--ease);
+  will-change: transform;
+}
+.cv-cursor svg {
+  display: block;
+  width: 100%; height: 100%;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
+  transition: transform 130ms var(--ease);
+}
+.cv-cursor.click svg { transform: scale(0.8); }
+/* Click ripple emanating from the pointer tip */
+.cv-cursor::after {
+  content: "";
+  position: absolute;
+  top: 4px; left: 4px;
+  width: 16px; height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 107, 61, 0.9);
+  opacity: 0;
+  transform: scale(0.2);
+}
+.cv-cursor.click::after { animation: cv-click 400ms ease-out; }
+@keyframes cv-click {
+  0% { opacity: 0.9; transform: scale(0.2); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+
+/* Tags above each project card, beside the project name (right canvas).
+   Greyed out by default; they light up orange for the active project (the one
+   last hovered) and stay lit until another project is hovered — in sync with
+   the title highlight. */
+.cv-node-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.cv-node-tags span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--cv-muted);
+  background: rgba(0, 0, 0, 0.06);
+  padding: 3px 9px;
+  border-radius: 999px;
+  transition: background 200ms var(--ease), color 200ms var(--ease);
+}
+.cv-node.is-active .cv-node-tags span,
+.cv-node:focus-visible .cv-node-tags span {
+  color: #fff;
+  background: var(--cv-wire);
+}
+
+/* Right: node canvas */
+.cv-canvas {
+  flex: 1 1 52%;
+  min-width: 0;
+  align-self: stretch;
+  position: relative;
+  background-color: var(--cv-bg);
+  background-image: radial-gradient(var(--cv-dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.cv-stage { position: relative; width: 100%; min-height: 100%; }
+.cv-wires {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  overflow: visible;
+  z-index: 1;
+  pointer-events: none;
+}
+.cv-wires path { fill: none; stroke: var(--cv-wire); stroke-width: 1.6; }
+.cv-wires circle { fill: var(--cv-wire); }
+
+/* ---------- Node ---------- */
+.cv-node {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  color: var(--cv-ink);
+  transition: opacity 300ms var(--ease);
+}
+.cv-node-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  padding: 0 3px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.cv-node-labels .l { color: var(--cv-ink); }
+/* Name brightens when its card is the expanded one */
+.cv-node.is-active .cv-node-labels .l { color: var(--cv-wire); }
+.cv-card {
+  position: relative;
+  border: 1px solid var(--cv-line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--cv-panel);
+  transition: border-color 240ms var(--ease), box-shadow 360ms var(--ease),
+              transform 360ms var(--ease);
+}
+.cv-frame { display: block; width: 100%; aspect-ratio: 16 / 11; overflow: hidden; }
+.cv-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.cv-mark {
+  width: 100%; height: 100%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(120% 120% at 30% 20%, #f5f5f3 0%, #e6e6e1 70%);
+}
+.cv-mark svg { width: 46px; height: 46px; opacity: 0.5; }
+.cv-node.is-active .cv-card {
+  border-color: var(--cv-wire);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px var(--cv-wire), 0 22px 50px -24px rgba(0, 0, 0, 0.35);
+}
+.cv-node:focus-visible { outline: none; }
+.cv-node:focus-visible .cv-card { border-color: var(--cv-wire); box-shadow: 0 0 0 2px var(--cv-wire); }
+/* Only unlinked placeholders lose the pointer — linked ones render as <a>. */
+div.cv-node.is-placeholder { cursor: default; }
+
+/* ---------- Mobile: drop the canvas, stack the projects ---------- */
+@media (max-width: 900px) {
+  .cv-section { flex-direction: column; }
+  .cv-feature { display: none; }
+  .cv-canvas {
+    flex: 1 1 auto;
+    align-self: auto;
+    padding: 24px 18px;
+    width: 100%;
+  }
+  .cv-wires { display: none; }
+  .cv-stage { min-height: 0 !important; height: auto !important; }
+  .cv-node {
+    position: static !important;
+    width: auto !important;
+    left: auto !important; top: auto !important;
+    margin-bottom: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-shot { transition: opacity 200ms; }
+  .cv-device { transition: none; }
+}

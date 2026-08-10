@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Optimizely · Hannah Hatchett</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body class="case-study-page">
+  <header class="site-nav">
+    <a href="index.html" class="site-nav-name">Hannah Hatchett</a>
+    <nav class="site-nav-links">
+      <a href="index.html" class="active">Work</a>
+      <a href="playground.html">Play</a>
+      <a href="about.html">About</a>
+      <a href="hannah-hatchett-cv.pdf" target="_blank" rel="noopener">CV</a>
+    </nav>
+  </header>
+
+  <main class="main case-study">
+
+      <!-- Top hero: project title + tagline + metadata -->
+      <section class="case-header reveal">
+        <div class="case-header-main">
+          <h1 class="case-title">Optimizely</h1>
+          <p class="case-tagline">
+            An activation workflow for a product customers already own.
+            Closing the gap between personalization interest and
+            personalization action.
+          </p>
+          <a class="case-header-link"
+             href="https://optimizely-personalization.vercel.app/optimizations"
+             target="_blank" rel="noopener">
+            View the prototype <span class="arrow">↗</span>
+          </a>
+        </div>
+        <aside class="case-meta">
+          <div class="meta-item">
+            <span class="meta-label">Context</span>
+            <span class="meta-value">
+              Optimizely Capstone · Co-op<br />
+              MHCI+D, University of Washington
+            </span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">My Role</span>
+            <span class="meta-value">UX Research, UX Design</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Timeline</span>
+            <span class="meta-value">Jan to Aug 2026<br />In final testing</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Team</span>
+            <span class="meta-value">
+              Hannah Hatchett, Stella Sun,<br />
+              Peggy Shen, Naomi Boruchowicz
+            </span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Advisors</span>
+            <span class="meta-value">
+              Britt Hall, VP of Product<br />
+              Brittany Butler, Senior Manager<br />of Product
+            </span>
+          </div>
+        </aside>
+      </section>
+
+      <!-- HERO CAROUSEL — click, arrow keys, or dots to cycle.
+           Swap each .hero-slide div for <img src="…" alt="…" />, keeping
+           class="active" on the first one. -->
+      <figure class="case-hero">
+        <div class="case-hero-viewer" role="button" tabindex="0"
+             aria-label="Prototype screenshot carousel. Click or press arrow keys to advance">
+          <div class="hero-slide active" data-label="Hero 1. Experiments page with the nudge"></div>
+          <div class="hero-slide" data-label="Hero 2. Data gap picker"></div>
+          <div class="hero-slide" data-label="Hero 3. Results page"></div>
+        </div>
+        <button class="hero-nav hero-nav-prev" type="button" aria-label="Previous image">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18" /></svg>
+        </button>
+        <button class="hero-nav hero-nav-next" type="button" aria-label="Next image">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
+        </button>
+        <div class="case-hero-dots" role="tablist" aria-label="Choose image">
+          <button class="dot active" type="button" aria-label="Image 1"></button>
+          <button class="dot" type="button" aria-label="Image 2"></button>
+          <button class="dot" type="button" aria-label="Image 3"></button>
+        </div>
+      </figure>
+
+      <!-- SITUATION -->
+      <section class="case-row">
+        <h2 class="case-row-title">Situation</h2>
+        <div class="case-row-body">
+          <p>
+            Optimizely customers say they want personalization. Almost none of
+            them ship it. The people who buy the product are not the people who
+            have to run it, and the handoff between them breaks.
+          </p>
+          <p>
+            The buyer signs the contract and moves on. Launching a campaign
+            falls to a marketer who never chose the goal. The marketers hit a
+            data setup wall the sales conversation never mentioned. Even after
+            clearing it, they have no reliable way to tell whether the campaign
+            worked without product knowledge. Personalization offers nothing
+            like the statistical confidence marketers already trust from A/B
+            testing.
+          </p>
+          <blockquote class="case-quote">
+            <p>
+              Most customers who buy Optimizely's personalization product are
+              not using it, and the churn rate after the first campaign is
+              around 80-90%.
+            </p>
+            <cite>Optimizely SME</cite>
+          </blockquote>
+          <p>
+            That gap between intent and usage became the project. It is not
+            what we were originally asked to work on.
+          </p>
+        </div>
+      </section>
+
+      <!-- TASK -->
+      <section class="case-row">
+        <h2 class="case-row-title">Task</h2>
+        <div class="case-row-body">
+          <p>
+            Our advisors brought us in to build a personalization agent for
+            Opal, Optimizely's agentic platform. The goal was to help clients
+            carry out more tasks inside a product they already owned. It named a
+            destination and left discovery to fill in the details.
+          </p>
+          <!-- TODO — optional second paragraph on constraints. Advisor cadence,
+               data or production access, how the four of you split surfaces,
+               the fixed August end date. Bottle Cap's Task names who you had to
+               work through; this one still doesn't. -->
+        </div>
+      </section>
+
+      <!-- ACTION (intro) -->
+      <section class="case-row">
+        <h2 class="case-row-title">Action</h2>
+        <div class="case-row-body">
+          <p>
+            What we designed is an activation workflow. The personalization
+            product already existed. The work was getting new customers into it,
+            and giving the customers already in it a reason to stay.
+          </p>
+          <p>
+            Those are two audiences and one surface. A marketer who has never
+            launched a campaign needs a way in that does not start with a manual
+            data audit. A marketer already running campaigns needs a prompt they
+            would not have gone looking for — a nudge that says "here is
+            something you can run right now," or "here is something you could
+            run after connecting two more data points." The first group gets
+            activated, the second gets a quality of life update, and Optimizely
+            gets a product its customers actually use.
+          </p>
+          <p>
+            The project moved through three phases. Our discovery phase ended by
+            changing the brief. Two design phases followed, and I owned a
+            surface in each one. Research reframed what we were solving, and the
+            design work had to answer the two findings with the least product
+            support behind them.
+          </p>
+          <p>
+            We treated personalization as a mode inside the experimentation
+            workflow marketers already use, not as its own destination. That
+            answered a finding we kept hearing, where personalization and
+            experimentation are seen as two parallels in the same workflow. This
+            led to a constraint for my own design work. Whatever I designed had
+            to fit inside a workflow that marketers are already familiar with.
+          </p>
+        </div>
+      </section>
+
+      <!-- PHASE 1 -->
+      <section class="case-row case-phase">
+        <div class="case-row-title">
+          <span class="phase-eyebrow">Phase 01</span>
+          <h2>Discovery &amp; Reframing the Brief</h2>
+        </div>
+        <div class="case-row-body">
+          <div class="phase-block">
+            <p>
+              I needed to understand how marketers actually do personalization,
+              and why interest so rarely turns into a shipped campaign. I also
+              needed enough evidence to confirm the original direction or argue
+              for a different one.
+            </p>
+          </div>
+
+          <div class="phase-block">
+            <div class="case-media-inline case-media-board"
+                 data-label="Figma synthesis board. Interview insights clustered into the three findings"></div>
+            <p>
+              As a team, we ran 11 interviews. Six were Optimizely subject
+              matter experts and five were marketers, some of them Optimizely
+              customers and some on competitor tools. Alongside that we did desk
+              research on Optimizely's existing personalization and
+              experimentation products. I ran 4 of the 11 interviews, then
+              pulled insights and findings.
+            </p>
+            <p>
+              Our original brief was to explore agents for task automation,
+              based on our advisors' initial assumption. What we found didn't
+              support that: the problem wasn't task automation at all. It was
+              churn. Customers found the personalization product hard to use and
+              navigate. They could not work out what data it needed from them.
+              Three findings anchored everything that came after.
+            </p>
+            <p>
+              <strong>Customers think personalization requires a complete
+              customer profile.</strong> Marketers assumed they needed a full
+              CDP (Customer Data Platform) setup before they could start, so
+              they never discovered the campaigns they could already run with
+              the data they had.
+            </p>
+            <p>
+              <strong>Personalization struggles when it's treated as separate
+              from experimentation.</strong> A different tool and a different
+              mental model meant it competed for attention behind testing work
+              marketers were already prioritizing.
+            </p>
+            <blockquote class="case-quote">
+              <p>
+                Testing was simpler than personalization… personalization felt
+                like the next step I was trying to get to.
+              </p>
+              <cite>Marketer</cite>
+            </blockquote>
+            <p>
+              <strong>Customers can't judge whether personalization
+              worked.</strong> Without a clear read on success, marketers could
+              not tell if a campaign changed anything, especially when the
+              value showed up in behavior rather than an immediate lift in
+              conversions.
+            </p>
+          </div>
+
+          <div class="phase-block">
+            <p>
+              We took this back to our advisors and pushed to change the scope.
+              We proposed a fix inside the personalization product itself,
+              aiming at the churn our research found, rather than an agent
+              layered on top of it. Building the original agent would have added
+              capability to a product customers were already abandoning.
+            </p>
+            <p>
+              The advisors agreed and the project refocused. The three findings
+              turned into three design opportunities. The first was to give
+              customers an entry point using data they already have. The second
+              was to make personalization part of the experimentation workflow
+              instead of a separate destination. The third was to show
+              behavioral data next to hard numbers so that success becomes
+              readable.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 2 -->
+      <section class="case-row case-phase">
+        <div class="case-row-title">
+          <span class="phase-eyebrow">Phase 02</span>
+          <h2>The Data Gap Picker</h2>
+        </div>
+        <div class="case-row-body">
+          <div class="phase-block">
+            <p>
+              Finding one says marketers stall because they think they need a
+              complete customer profile before they can start. The obvious
+              response is to show the full campaign gallery. That actually makes
+              it worse. A marketer scanning everything they could theoretically
+              run still can't tell what is available to them right now, and
+              that uncertainty is what stopped them in the first place.
+            </p>
+          </div>
+
+          <div class="phase-block">
+            <p>
+              I needed to design an entry point that gives a marketer one
+              campaign they can launch today, without requiring them to
+              understand their entire data setup first.
+            </p>
+          </div>
+
+          <div class="phase-block">
+            <div class="case-media-inline case-media-board"
+                 data-label="Data gap picker. Runnable today campaigns above, near miss campaigns below"></div>
+            <p>
+              The picker leads with campaigns they can run today on data
+              already connected. Below that it shows near miss campaigns that
+              sit one or two data points away, each with a visible path to
+              unlock them. A marketer never has to know what a CDP is, or
+              whether their setup counts as complete. They see what works now
+              and what sits one step away.
+            </p>
+            <p>
+              The same surface keeps working after the first campaign. As a
+              marketer connects more data, near miss campaigns cross over into
+              runnable ones, and the nudge surfaces them without being asked.
+              Someone six campaigns in gets told what just became possible.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 3 -->
+      <section class="case-row case-phase">
+        <div class="case-row-title">
+          <span class="phase-eyebrow">Phase 03</span>
+          <h2>The Results Pages</h2>
+        </div>
+        <div class="case-row-body">
+          <div class="phase-block">
+            <p>
+              Finding three had the least product support behind it. A/B
+              testing has trained marketers to expect a result to come with
+              evidence behind it, and to distrust one that arrives without any.
+              Personalization offered them nothing equivalent. A flat
+              conversion number does not answer the question they are actually
+              asking, which is whether they should believe it.
+            </p>
+          </div>
+
+          <div class="phase-block">
+            <p>
+              I needed to design how a result is presented, which meant
+              deciding what a marketer sees first, in what order, and with how
+              much confidence attached to it. The page had to give an honest
+              read on whether a campaign moved their metric, even when the
+              honest answer was that there was not enough data yet.
+            </p>
+          </div>
+
+          <div class="phase-block">
+            <div class="case-media-inline case-media-board"
+                 data-label="Results page. A qualified read, with the confidence caveat visible"></div>
+            <p>
+              My work here was presentation: deciding what a marketer sees
+              first, what gets qualified, and what the page refuses to claim.
+              How a result reads changes with sample size. A campaign at roughly
+              100 visitors gets flagged as too early to trust. One nearing 1,000
+              gets a steady read on the trend. States like "no holdback
+              configured" or a tracking fault get called out plainly instead of
+              showing up as a zero. A zero a marketer can't tell apart from a
+              real result is worse than no number at all.
+            </p>
+            <p>
+              Where it helps, the page shows behavioral signal next to lift, so
+              a marketer can see engagement shift before conversions move — a
+              conversion number alone can't answer that part of finding three.
+            </p>
+            <p>
+              As of today, these pages are still in refinement. The presentation
+              logic is settled; I'm still adding elements as my user testing
+              feedback comes in.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESULT -->
+      <section class="case-row">
+        <h2 class="case-row-title">Result</h2>
+        <div class="case-row-body">
+          <!-- END TO END FLOW — the loop the build exists to close.
+               Nudge, pick, launch, find out if it worked. -->
+          <figure class="case-hero case-hero-inline">
+            <div class="case-hero-viewer" role="button" tabindex="0"
+                 aria-label="End to end flow. Click or press arrow keys to cycle through screens">
+              <div class="hero-slide active" data-label="1. Nudge on the Experiments page"></div>
+              <div class="hero-slide" data-label="2. Pick a campaign"></div>
+              <div class="hero-slide" data-label="3. Launch"></div>
+              <div class="hero-slide" data-label="4. Read the result"></div>
+            </div>
+            <button class="hero-nav hero-nav-prev" type="button" aria-label="Previous image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18" /></svg>
+            </button>
+            <button class="hero-nav hero-nav-next" type="button" aria-label="Next image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
+            </button>
+            <div class="case-hero-dots" role="tablist" aria-label="Choose screen">
+              <button class="dot active" type="button" aria-label="Screen 1"></button>
+              <button class="dot" type="button" aria-label="Screen 2"></button>
+              <button class="dot" type="button" aria-label="Screen 3"></button>
+              <button class="dot" type="button" aria-label="Screen 4"></button>
+            </div>
+          </figure>
+          <p>
+            This project is still in development. I am currently in the final
+            round of user testing and refinement, before the project closes at
+            the end of August. Outside of the prototype, the remaining work is a
+            video demo of the full flow, shot like a commercial, which I am
+            directing.
+          </p>
+          <!-- TODO — after the project closes at the end of August. What the
+               build does start to finish, what testing actually returned, and
+               what stayed open. Bottle Cap's Result is candid about having no
+               metrics after launch; this one should be just as candid about
+               what the two rounds of testing did and didn't settle. -->
+        </div>
+      </section>
+
+      <!-- REFLECTION -->
+      <section class="case-row">
+        <h2 class="case-row-title">Reflection</h2>
+        <div class="case-row-body">
+          <p>
+            <!-- TODO — what you would do differently, specifically. -->
+          </p>
+          <p>
+            <!-- TODO — the scope change is the obvious second paragraph. What
+                 it taught you about arguing against a brief set by people more
+                 senior than you, with research as the argument. -->
+          </p>
+        </div>
+      </section>
+
+      <nav class="case-footer-nav">
+        <a href="index.html">← Back to all work</a>
+      </nav>
+
+      <footer class="footer">
+        <span>© 2026 Hannah Hatchett</span>
+        <span>Seattle, WA</span>
+      </footer>
+  </main>
+
+  <script src="script.js?v=2"></script>
+</body>
+</html>

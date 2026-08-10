@@ -32,12 +32,12 @@
   // Animated selection cycler — Hannah's cursor "drags" the box to fit each word.
   const cycler = document.querySelector(".selected-word-cycler");
   if (cycler) {
-    const words = ["fun", "stories", "art"];
+    const words = ["story telling", "problem solving", "creating experiences"];
     // Per-word accent color: pink / green / purple
     const wordColors = {
-      fun: "255, 77, 141",
-      stories: "34, 197, 94",
-      art: "147, 80, 232",
+      "story telling": "255, 77, 141",
+      "problem solving": "34, 197, 94",
+      "creating experiences": "147, 80, 232",
     };
     const textEl = cycler.querySelector(".selected-word-text");
     const emEl = textEl.querySelector("em");
@@ -131,7 +131,10 @@
 
   // Case-study hero(s): click / arrow keys / dots cycle through screenshots.
   document.querySelectorAll(".case-hero-viewer").forEach((heroViewer) => {
-    const imgs = Array.from(heroViewer.querySelectorAll("img"));
+    // Slides are normally <img>. A carousel awaiting artwork can use
+    // .hero-slide placeholders instead — they cycle the same way.
+    const imgs = Array.from(heroViewer.querySelectorAll("img, .hero-slide"));
+    if (!imgs.length) return;
     const figure = heroViewer.closest(".case-hero");
     const dots = Array.from(figure.querySelectorAll(".case-hero-dots .dot"));
     const counterEl = figure.querySelector(".hero-counter");
@@ -139,7 +142,7 @@
     let idx = 0;
 
     const cropFractionFor = (img) =>
-      img.src.indexOf("final-bottlecap") !== -1 ? 0.035 : 0;
+      (img.src || "").indexOf("final-bottlecap") !== -1 ? 0.035 : 0;
     const applyRatio = (img) => {
       const crop = cropFractionFor(img);
       heroViewer.style.aspectRatio =
