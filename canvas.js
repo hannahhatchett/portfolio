@@ -28,22 +28,33 @@
   const NODES = [
     {
       name: "Optimizely",
-      tags: ["In progress"],
+      tags: ["UX", "B2B SaaS", "Completed"],
       blurb: "A new case study is in the works — check back soon.",
-      placeholder: true, href: "optimizely.html", bg: "#b9c79a",
-      x: 0.05, y: 64, w: 0.46, ar: "16 / 11",
+      img: "images/optimizely-home-card.jpg", href: "optimizely.html", bg: "#b9c79a",
+      x: 0.05, y: 64, w: 0.46, ar: "808 / 396",
+      // Left-display browse animation: real captures from the live
+      // prototype. Overview is a dashboard — nothing there is worth
+      // scrolling to, so it skips straight to the nudge and clicks it
+      // (a real action, leads to the picker). The picker just scrolls
+      // through the campaigns, then the loop restarts — no fake click back.
+      anim: [
+        { img: "images/optimizely-overview-top.jpg", click: [83, 51], scroll: false },
+        { img: "images/optimizely-picker-full.jpg" },
+      ],
     },
     {
       name: "Haunted Heist",
-      tags: ["In progress"],
+      tags: ["UX", "Indie Game", "In Progress"],
       blurb: "A new case study is in the works — check back soon.",
-      placeholder: true, href: "haunted-heist.html", bg: "#f4d8d4",
-      x: 0.53, y: 300, w: 0.42, ar: "16 / 12",
+      img: "images/haunted-heist-key-art.jpg",
+      previewVideo: "videos/haunted-heist-preview.mp4",
+      href: "haunted-heist.html", bg: "#f4d8d4",
+      x: 0.53, y: 300, w: 0.42, ar: "1704 / 976",
     },
     {
       name: "Bottle Cap",
       agency: "Element 47",
-      tags: ["Web Design", "UX", "Shipped", "2024"],
+      tags: ["Web Design", "Design Agency", "Shipped"],
       blurb: "Redesigning the brand and website for a Nashville pub with an outdated web presence. Owned the process end-to-end, from client strategy through wireframes and contractor collaboration.",
       img: "images/final-bottlecap-home-clean.png", href: "bottle-cap.html",
       bg: "#cfe1f2",
@@ -61,7 +72,7 @@
     },
   ];
   const EDGES = [[0, 1], [1, 2]];
-  const DEFAULT_ACTIVE = 2;
+  const DEFAULT_ACTIVE = 0;
   const DESIGN_W = 700;   // reference width for scaling the vertical rhythm
   const MAX_W = 460;      // cap card width on very wide screens
 
@@ -99,10 +110,18 @@
       f = document.createElement("div");
       f.className = "cv-shot is-mark";
       f.innerHTML = MARK;
+    } else if (n.previewVideo) {
+      f = document.createElement("video");
+      f.className = "cv-shot";
+      f.src = n.previewVideo;
+      f.autoplay = true;
+      f.loop = true;
+      f.muted = true;
+      f.playsInline = true;
     } else {
       f = document.createElement("img");
       f.className = "cv-shot";
-      f.src = n.img;
+      f.src = n.previewImg || n.img;
       f.alt = "";
     }
     screenEl.appendChild(f);
@@ -208,24 +227,40 @@
         const fr = frameFor(s.img);
         showFrame(s.img);
         frameInstant(fr, 0);                       // start at the top
+        cursor.style.opacity = "1";
         await wait(350); if (my !== token) return;
-        // scroll down through the page; cursor moves out to the side.
-        // Duration scales with page height so long pages get a longer scroll.
-        const dur = scrollDur(fr);
-        moveCursor([93, 46], false);
-        frameScroll(fr, 100, dur);
-        await wait(dur + 150); if (my !== token) return;
-        // cursor returns to the nav item; snap the page back to the top
-        moveCursor(s.click, false);
-        await wait(430); if (my !== token) return;
-        frameInstant(fr, 0);
-        await wait(300); if (my !== token) return;
-        // click: zoom in close, centered on the mouse
-        cursor.classList.add("click");
-        frameZoom(fr, 2.8, s.click[0], s.click[1], 600);
-        await wait(340); if (my !== token) return;
-        cursor.classList.remove("click");
-        await wait(220); if (my !== token) return;
+        if (s.scroll === false) {
+          // Dashboard-style scene: nothing worth scrolling to. Go straight
+          // to the click target instead of scrolling through it first.
+          moveCursor(s.click, false);
+          await wait(500); if (my !== token) return;
+        } else {
+          // scroll down through the page; cursor moves out to the side.
+          // Duration scales with page height so long pages get a longer scroll.
+          const dur = scrollDur(fr);
+          moveCursor([93, 46], false);
+          frameScroll(fr, 100, dur);
+          await wait(dur + 150); if (my !== token) return;
+          if (s.click) {
+            // cursor returns to the nav item; snap the page back to the top
+            moveCursor(s.click, false);
+            await wait(430); if (my !== token) return;
+            frameInstant(fr, 0);
+            await wait(300); if (my !== token) return;
+          }
+        }
+        if (s.click) {
+          // click: zoom in close, centered on the mouse
+          cursor.classList.add("click");
+          frameZoom(fr, 2.8, s.click[0], s.click[1], 600);
+          await wait(340); if (my !== token) return;
+          cursor.classList.remove("click");
+          await wait(220); if (my !== token) return;
+        } else {
+          // No click here — just a beat before the loop restarts.
+          cursor.style.opacity = "0";
+          await wait(400); if (my !== token) return;
+        }
         // crossfade to the next page (fresh, at the top, no zoom)
         idx = (idx + 1) % scenes.length;
         const nf = frameFor(scenes[idx].img);

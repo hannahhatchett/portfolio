@@ -11,13 +11,36 @@
 </head>
 <body class="case-study-page">
   <header class="site-nav">
-    <a href="index.html" class="site-nav-name">Hannah Hatchett</a>
+    <a href="index.html" class="site-logo" aria-label="Hannah Hatchett — Home">
+      <span class="site-logo-key site-logo-key-back" aria-hidden="true">alt</span>
+      <span class="site-logo-key site-logo-key-front" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M3 11.5L12 4l9 7.5M5.5 10v9a1 1 0 001 1H9a1 1 0 001-1v-4h4v4a1 1 0 001 1h2.5a1 1 0 001-1v-9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </span>
+    </a>
     <nav class="site-nav-links">
       <a href="index.html" class="active">Work</a>
-      <a href="playground.html">Play</a>
       <a href="about.html">About</a>
       <a href="hannah-hatchett-cv.pdf" target="_blank" rel="noopener">CV</a>
     </nav>
+
+    <div class="nav-squiggle" aria-hidden="true">
+      <svg viewBox="0 0 800 40" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="navSquiggleGradient" gradientUnits="userSpaceOnUse"
+                           x1="0" y1="0" x2="100" y2="0" spreadMethod="repeat">
+            <stop offset="0%" stop-color="#ff6b3d" />
+            <stop offset="25%" stop-color="#b9c79a" />
+            <stop offset="50%" stop-color="#f4a6ae" />
+            <stop offset="75%" stop-color="#7fb3d9" />
+            <stop offset="100%" stop-color="#ff6b3d" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M0,20 Q25,8 50,20 Q75,32 100,20 Q125,8 150,20 Q175,32 200,20 Q225,8 250,20 Q275,32 300,20 Q325,8 350,20 Q375,32 400,20 Q425,8 450,20 Q475,32 500,20 Q525,8 550,20 Q575,32 600,20 Q625,8 650,20 Q675,32 700,20 Q725,8 750,20 Q775,32 800,20"
+          fill="none" stroke="url(#navSquiggleGradient)" stroke-width="5"
+          stroke-linecap="round" vector-effect="non-scaling-stroke" />
+      </svg>
+    </div>
   </header>
 
   <main class="main case-study">
@@ -26,26 +49,27 @@
       <section class="case-header reveal">
         <div class="case-header-main">
           <h1 class="case-title">Bottle Cap</h1>
-          <p class="case-tagline">
-            Brand identity and website redesign for a Nashville pub.
-          </p>
         </div>
         <aside class="case-meta">
           <div class="meta-item">
-            <span class="meta-label">Agency</span>
-            <span class="meta-value">Element 47<br />Nashville, TN</span>
-          </div>
-          <div class="meta-item">
             <span class="meta-label">Client</span>
-            <span class="meta-value">Bottle Cap<br />Nashville, TN</span>
+            <span class="meta-value">Bottle Cap, a pub in downtown Nashville</span>
           </div>
           <div class="meta-item">
-            <span class="meta-label">My Role</span>
+            <span class="meta-label">Agency</span>
+            <span class="meta-value">Element 47, a branding agency in Nashville, TN</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
             <span class="meta-value">UX Design Intern</span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Timeline</span>
-            <span class="meta-value">2 months · 2024</span>
+            <span class="meta-value">May – August 2024</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">Shipped. The live site is the work from this project.</span>
           </div>
         </aside>
       </section>
@@ -74,9 +98,22 @@
         </div>
       </figure>
 
-      <!-- SITUATION -->
+      <!-- WHAT IS BOTTLECAP -->
       <section class="case-row">
-        <h2 class="case-row-title">Situation</h2>
+        <h2 class="case-row-title">What is Bottle Cap?</h2>
+        <div class="case-row-body">
+          <p>
+            Bottle Cap is a restaurant and bar in Nashville's 12 South
+            neighborhood, serving craft cocktails, cold drafts, and pub food
+            favorites in a lively space built for game days and easy nights
+            out.
+          </p>
+        </div>
+      </section>
+
+      <!-- THE CHALLENGE -->
+      <section class="case-row">
+        <h2 class="case-row-title">The Challenge</h2>
         <div class="case-row-body">
           <figure class="case-media-inline case-media-scroller"
                   aria-label="Auto scrolling preview of the original Bottle Cap website">
@@ -84,43 +121,59 @@
                  alt="Original Bottle Cap website, full page screenshot showing the previous brand and layout" />
           </figure>
           <p>
-            Bottle Cap is a popular pub in the heart of downtown Nashville. Its
-            old website was years out of date. For context, the menu was a fuzzy
-            screenshot of a PDF, the events page was a wall of type with no
-            hierarchy, and the location page only gave an address with no
-            hyperlink to Maps.
+            Bottle Cap's website was years out of date. The menu was a fuzzy
+            screenshot of a PDF. The events page was a wall of type with no
+            hierarchy. The location page gave an address with no link to a
+            map. Navigation changed from page to page, and the things a guest
+            actually comes for, hours, a menu, what's on tonight, were hard
+            to find or missing.
+          </p>
+          <p>
+            Underneath the usability problems was a brand problem. The client
+            had a competitor's site in mind and wanted to copy it.
           </p>
         </div>
       </section>
 
-      <!-- TASK -->
+      <!-- THE SOLUTION -->
       <section class="case-row">
-        <h2 class="case-row-title">Task</h2>
+        <h2 class="case-row-title">The Solution</h2>
         <div class="case-row-body">
           <p>
-            I joined Element 47, a branding agency in Nashville, TN, as a UX
-            design intern to redesign the information architecture and build a
-            brand identity that fit the pub.
-          </p>
-          <p>
-            I ran the design process on my own, from discovery through
-            wireframes and visual design to handoff. I handed off low fidelity
-            screens to our contractor at the time, who was hired to bring them
-            to high fidelity. So I had to lead that collaboration and give clear
-            directions.
+            A five-page site with one navigation, a page each for menu,
+            specials, events, and location, and a brand direction that
+            belonged to Bottle Cap instead of a competitor. I ran research,
+            set the direction, and drew the wireframes, then handed off to a
+            contracted UI designer.
           </p>
         </div>
       </section>
 
-      <!-- ACTION (intro) -->
+      <!-- THE OUTCOME -->
       <section class="case-row">
-        <h2 class="case-row-title">Action</h2>
+        <h2 class="case-row-title">The Outcome</h2>
         <div class="case-row-body">
           <p>
-            The project ran in three phases. Discovery and research came first,
-            then brand direction and client advocacy, then wireframes and high
-            fidelity design. Each phase built on the one before it.
+            The site launched at the end of my internship with every
+            structural problem from discovery fixed: consistent navigation, a
+            responsive menu, a mapped location, and a brand that holds across
+            every page.
           </p>
+
+          <div class="case-stats case-stats-3">
+            <div class="stat-item">
+              <span class="stat-number">6</span>
+              <span class="stat-desc">Nashville competitors analyzed</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">5</span>
+              <span class="stat-desc">core pages: home, menu, specials, events, location</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">1</span>
+              <span class="stat-desc">intern, discovery through handoff</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -133,19 +186,13 @@
         <div class="case-row-body">
           <div class="phase-block">
             <p>
-              At the start I had a client and not much else. I did not know
+              At the start I had a client and not much else. I didn't know
               what the Bottle Cap brand should be, what was failing on the
-              existing site, or what people wanted from it. I needed to
-              understand the business and the market it competed in before I
-              designed anything.
+              existing site, or what people wanted from it.
             </p>
-          </div>
-
-          <div class="phase-block">
             <p>
-              I needed a clear picture of the client's priorities and
-              frustrations, and of how Bottle Cap sat next to other Nashville
-              bars.
+              <strong>Design problem:</strong> understand the business and
+              the market it competes in before designing anything.
             </p>
           </div>
 
@@ -155,22 +202,16 @@
                    alt="Competitive benchmarking board in FigJam showing homepage, specials, private parties, and catering pages from M.L. Rose, Burger Bar, Black Sheep Lodge, The Pharmacy, Black Tap, and Bad Luck Burger Club" />
             </figure>
             <p>
-              I worked with the Bottle Cap crew to surface what they wanted,
+              I worked with Element 47 to surface what Bottle Cap wanted,
               what they valued, and what frustrated them about the current
-              site. Then I ran a competitive analysis of other Nashville bars
-              and pubs, including M.L. Rose, Burger Bar, Black Sheep Lodge,
-              The Pharmacy, Black Tap, and Bad Luck Burger Club. I looked at
-              their visual systems, their site structures, and the conventions
-              they all shared.
+              site. Then I ran a competitive analysis of six other Nashville
+              bars and pubs. I looked at their visual systems, their site
+              structures, and the conventions they all shared.
             </p>
-          </div>
-
-          <div class="phase-block">
             <p>
-              Most of those bars looked alike. That gave Bottle Cap room to
-              stand out. The research also surfaced a problem I would have to
-              handle in the next phase. The client liked the look of one
-              competitor and wanted to copy it.
+              The research also surfaced the problem I'd have to handle
+              next: the client liked the look of one competitor and wanted to
+              copy it.
             </p>
           </div>
         </div>
@@ -185,34 +226,32 @@
         <div class="case-row-body">
           <div class="phase-block">
             <p>
-              The client wanted to imitate a competing Nashville bar. I
-              understood the appeal. They responded to that bar's energy and
-              tone. But imitating another business's visual identity is
-              unfavorable for both businesses involved, and it would have handed
-              Bottle Cap a borrowed identity instead of a brand. I had to work
-              out who Bottle Cap was and build an identity from that, not
-              reproduce someone else's answer.
+              I understood the appeal. The client responded to that bar's
+              energy and tone. But imitating another business's visual
+              identity is bad for both businesses, and it would have handed
+              Bottle Cap a borrowed identity instead of a brand.
+            </p>
+            <p>
+              <strong>Design problem:</strong> bring the client to an
+              original direction without dismissing their instincts.
             </p>
           </div>
 
           <div class="phase-block">
+            <figure class="case-media-inline case-media-board">
+              <img src="images/bottlecap-pattern.png"
+                   alt="Bottle Cap brand pattern — the neighborhood-bar typography system that came out of the redirected brand direction" />
+            </figure>
             <p>
-              Moving forward with this logic, I needed to bring Bottle Cap to an
-              original direction without dismissing their instincts, and build a
-              visual foundation that belonged to them.
-            </p>
-          </div>
-
-          <div class="phase-block">
-            <p>
-              Instead of telling the client that copying a competitor was a bad
-              idea, I used their own goals to reframe the conversation. They
-              wanted to stand out in Nashville, build a regular crowd, and feel
-              local. So I presented other popular competitors, talked through
-              the most desirable aspects, and came up with an original
-              direction. By grounding the pitch in their own goals, it made the
-              redirection a collaborative effort instead of a correction. That
-              direction became the foundation for the whole redesign.
+              Instead of telling them copying a competitor was a bad idea, I
+              used their own goals to reframe the conversation. They wanted
+              to stand out in Nashville, build a regular crowd, and feel like
+              "the local, cozy bar next door." So I presented other popular
+              competitors, talked through the most desirable aspects of each,
+              and we arrived at an original direction together. Grounding the
+              pitch in their goals made the redirection a collaborative
+              effort instead of a correction. That direction became the
+              foundation for the whole redesign.
             </p>
           </div>
         </div>
@@ -222,16 +261,18 @@
       <section class="case-row case-phase">
         <div class="case-row-title">
           <span class="phase-eyebrow">Phase 03</span>
-          <h2>Wireframing &amp; High Fidelity Design</h2>
+          <h2>Wireframes &amp; Handoff</h2>
         </div>
         <div class="case-row-body">
           <div class="phase-block">
             <p>
-              With the brand direction approved, I had to turn it into a
-              working site. The old site had real usability problems.
-              Navigation changed from page to page, content had no hierarchy,
-              and key information like the menu, specials, events, and location
-              was hard to find or missing entirely.
+              With the direction approved, I had to turn it into a working
+              site.
+            </p>
+            <p>
+              <strong>Design problem:</strong> fix the structure so a guest
+              can find hours, a menu, and events in one try, then get a
+              contractor to build it out without losing the direction.
             </p>
             <figure class="case-hero case-hero-inline">
               <div class="case-hero-viewer" role="button" tabindex="0"
@@ -261,43 +302,58 @@
           </div>
 
           <div class="phase-block">
-            <p>
-              I created wireframes that fixed the structure in Figma, and then I
-              had to get the contractor to bring those screens to high fidelity
-              without losing the brand system.
-            </p>
-          </div>
-
-          <div class="phase-block">
             <figure class="case-media-inline case-media-board">
               <img src="images/bottlecap-wireframes.png"
                    alt="Wireframe process in Figma. The Pages panel lists Home, About, Menu, Specials, Events, and Order Online. The canvas shows the home page wireframe with header, hero image, intro section, content blocks, and order CTA" />
             </figure>
             <p>
-              With the redesign, navigation now stays consistent across pages.
-              The menu, specials, events, and location each got their own page
-              for ease of use. Once Element 47 approved the wireframes, I handed
-              off to the contracted UI designer. I gave detailed guidance on the
-              brand system, reviewed the high fidelity screens for consistency,
-              and helped in the iteration process until they matched the
-              standard set in the brand phase.
-            </p>
-          </div>
-
-          <div class="phase-block">
-            <p>
-              From this, I delivered a complete website redesign, ready for
-              shipment. It held together as a brand, it fixed the structural
-              problems, and it matched what the client desired.
+              I created wireframes in Figma that fixed the structure.
+              Navigation stays the same on every page. The menu, specials,
+              events, and location each got their own page instead of
+              infinite scroll on one page. After Element 47 gave final
+              approval on the wireframes, I provided comprehensive brand
+              guidance to the contracted UI designer during handoff,
+              completing my time with Element 47.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- RESULT -->
+      <!-- WHAT SHIPPED -->
       <section class="case-row">
-        <h2 class="case-row-title">Result</h2>
+        <h2 class="case-row-title">What Shipped</h2>
         <div class="case-row-body">
+          <p>
+            The redesigned site launched after the end of my internship.
+          </p>
+
+          <table class="case-table">
+            <thead>
+              <tr>
+                <th>Found in discovery</th>
+                <th>Shipped</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Navigation changed from page to page</td>
+                <td>One navigation across all five pages</td>
+              </tr>
+              <tr>
+                <td>Menu was a screenshot of a text PDF</td>
+                <td>Responsive menu with photos on its own page</td>
+              </tr>
+              <tr>
+                <td>Location was an address with no link</td>
+                <td>Location page with a Google Map embed</td>
+              </tr>
+              <tr>
+                <td>Client wanted to copy a competitor</td>
+                <td>An original direction</td>
+              </tr>
+            </tbody>
+          </table>
+
           <figure class="case-hero case-hero-inline">
             <div class="case-hero-viewer" role="button" tabindex="0"
                  aria-label="Final Bottle Cap website. Click or press arrow keys to cycle through screens">
@@ -326,37 +382,13 @@
               <button class="dot" type="button" aria-label="Screen 5"></button>
             </div>
           </figure>
-          <p>
-            The redesigned site launched at the end of my internship. My work
-            wrapped at launch, so I have no numbers from after launch and no
-            further client feedback to share here.
-          </p>
-          <p>
-            What I can say is that the delivered site fixed every structural
-            problem I found in phase three. Navigation is consistent. The menu
-            is responsive instead of an embedded PDF. The location page has a
-            map. The brand system carries through every page. Bottle Cap went
-            from a dated site to an original identity with a website that works
-            for guests looking for hours, a menu, and events. I am happy to
-            share that their live site is the work I contributed in 2024.
-          </p>
-        </div>
-      </section>
 
-      <!-- REFLECTION -->
-      <section class="case-row">
-        <h2 class="case-row-title">Reflection</h2>
-        <div class="case-row-body">
           <p>
-            If I were to start over, I would expand the research to include bar
-            patrons. The stakeholders gave me a strong read on the business, but
-            testing with real users earlier would have validated the wireframe
-            decisions before I committed to any designs.
-          </p>
-          <p>
-            Redirecting the client on brand direction taught me the most. Good
-            design advocacy is not about overruling a client. It is about
-            helping them get to a better version of what they already want.
+            Bottle Cap transformed from a dated site into a site that
+            captures the welcoming, "local, cozy bar next door" atmosphere
+            the client envisioned, making it effortless for guests to find
+            the information they need. The live site stands as the directly
+            contributed work from 2024.
           </p>
         </div>
       </section>

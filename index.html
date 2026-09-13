@@ -6,48 +6,83 @@
   <title>Hannah Hatchett — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=2" />
-  <link rel="stylesheet" href="canvas.css?v=2" />
+  <link rel="stylesheet" href="canvas.css?v=3" />
 </head>
 <body>
   <header class="site-nav">
-    <a href="index.html" class="site-nav-name">Hannah Hatchett</a>
+    <a href="index.html" class="site-logo" aria-label="Hannah Hatchett — Home">
+      <span class="site-logo-key site-logo-key-back" aria-hidden="true">alt</span>
+      <span class="site-logo-key site-logo-key-front" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M3 11.5L12 4l9 7.5M5.5 10v9a1 1 0 001 1H9a1 1 0 001-1v-4h4v4a1 1 0 001 1h2.5a1 1 0 001-1v-9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </span>
+    </a>
     <nav class="site-nav-links">
       <a href="index.html" class="active">Work</a>
-      <a href="playground.html">Play</a>
       <a href="about.html">About</a>
       <a href="hannah-hatchett-cv.pdf" target="_blank" rel="noopener">CV</a>
     </nav>
+
+    <div class="nav-squiggle" aria-hidden="true">
+      <svg viewBox="0 0 800 40" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="navSquiggleGradient" gradientUnits="userSpaceOnUse"
+                           x1="0" y1="0" x2="100" y2="0" spreadMethod="repeat">
+            <stop offset="0%" stop-color="#ff6b3d" />
+            <stop offset="25%" stop-color="#b9c79a" />
+            <stop offset="50%" stop-color="#f4a6ae" />
+            <stop offset="75%" stop-color="#7fb3d9" />
+            <stop offset="100%" stop-color="#ff6b3d" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M0,20 Q25,8 50,20 Q75,32 100,20 Q125,8 150,20 Q175,32 200,20 Q225,8 250,20 Q275,32 300,20 Q325,8 350,20 Q375,32 400,20 Q425,8 450,20 Q475,32 500,20 Q525,8 550,20 Q575,32 600,20 Q625,8 650,20 Q675,32 700,20 Q725,8 750,20 Q775,32 800,20"
+          fill="none" stroke="url(#navSquiggleGradient)" stroke-width="5"
+          stroke-linecap="round" vector-effect="non-scaling-stroke" />
+      </svg>
+    </div>
   </header>
 
   <main id="home">
-    <!-- ============ Hero (kept from before) ============ -->
-    <div class="main">
-      <section class="hero reveal" aria-label="Intro">
-        <h2 class="hero-title">
-          I'm all about AI,<br />
-          interaction, and<br />
-          <span class="selected-word selected-word-cycler">
-            <span class="selection-handle tl"></span>
-            <span class="selection-handle tr"></span>
-            <span class="selection-handle bl"></span>
-            <span class="selection-handle br"></span>
-            <span class="selected-word-text" aria-live="polite"><em>fun</em></span>
-            <span class="cursor-tag cursor-tag-hero" aria-hidden="true">
-              <svg viewBox="0 0 16 16">
-                <path d="M2 1 L2 13 L5.5 10 L7.8 14.2 L9.6 13.4 L7.3 9.2 L11.5 9.2 Z"
-                      fill="#1a73ff" stroke="#fff" stroke-width="0.8" stroke-linejoin="round" />
-              </svg>
-              <span class="cursor-pill">Hannah</span>
+    <!-- ============ Statement hero ============ -->
+    <section class="statement-hero reveal" aria-label="Intro">
+      <div class="statement-band">
+        <div class="hero-frame" id="heroFrame" aria-hidden="true">
+          <div class="hero-guide hero-guide-top"></div>
+          <div class="hero-guide hero-guide-bottom"></div>
+          <div class="hero-frame-box">
+            <span class="hero-handle hero-handle-tl"></span>
+            <span class="hero-handle hero-handle-tr"></span>
+            <span class="hero-handle hero-handle-bl"></span>
+            <span class="hero-handle hero-handle-br"></span>
+            <span class="hero-frame-label">Statement</span>
+            <span class="hero-frame-dims"></span>
+          </div>
+          <div class="hero-cursor" id="heroCursor" aria-hidden="true">
+            <svg viewBox="0 0 16 16">
+              <path d="M2 1 L2 13 L5.5 10 L7.8 14.2 L9.6 13.4 L7.3 9.2 L11.5 9.2 Z"
+                fill="#b9c79a" stroke="#fff" stroke-width="0.8" stroke-linejoin="round" />
+            </svg>
+            <span class="hero-cursor-pill">Hannah</span>
+          </div>
+        </div>
+
+        <h1 class="statement-text" aria-label="Hannah Hatchett is a product designer who loves finding patterns hiding inside hard problems, turning ambiguity into something tangible, and leading with research to develop magical experiences.">
+          <span class="statement-line1" aria-hidden="true">Hannah Hatchett is a product designer who loves</span>
+          <span class="statement-line2" aria-hidden="true">
+            <span class="statement-line2-inner" id="statementLine2Inner">
+              <span class="statement-selection" id="statementSelection"></span>
+              <span class="statement-typed" id="statementTyped">finding patterns hiding inside hard problems.</span>
+              <span class="statement-caret" id="statementCaret"></span>
             </span>
           </span>
-        </h2>
-      </section>
-    </div>
+        </h1>
+      </div>
+    </section>
 
     <!-- ============ Selected work — node canvas ============ -->
-    <section class="cv-section-wrap" aria-label="Selected work">
+    <section class="cv-section-wrap" id="projects" aria-label="Selected work">
       <div class="cv-section">
         <!-- Left: rotatable device model of the active project -->
         <div class="cv-feature">

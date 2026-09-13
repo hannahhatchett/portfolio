@@ -11,13 +11,36 @@
 </head>
 <body>
   <header class="site-nav">
-    <a href="index.html" class="site-nav-name">Hannah Hatchett</a>
+    <a href="index.html" class="site-logo" aria-label="Hannah Hatchett — Home">
+      <span class="site-logo-key site-logo-key-back" aria-hidden="true">alt</span>
+      <span class="site-logo-key site-logo-key-front" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M3 11.5L12 4l9 7.5M5.5 10v9a1 1 0 001 1H9a1 1 0 001-1v-4h4v4a1 1 0 001 1h2.5a1 1 0 001-1v-9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </span>
+    </a>
     <nav class="site-nav-links">
       <a href="index.html">Work</a>
-      <a href="playground.html">Play</a>
       <a href="about.html" class="active">About</a>
       <a href="hannah-hatchett-cv.pdf" target="_blank" rel="noopener">CV</a>
     </nav>
+
+    <div class="nav-squiggle" aria-hidden="true">
+      <svg viewBox="0 0 800 40" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="navSquiggleGradient" gradientUnits="userSpaceOnUse"
+                           x1="0" y1="0" x2="100" y2="0" spreadMethod="repeat">
+            <stop offset="0%" stop-color="#ff6b3d" />
+            <stop offset="25%" stop-color="#b9c79a" />
+            <stop offset="50%" stop-color="#f4a6ae" />
+            <stop offset="75%" stop-color="#7fb3d9" />
+            <stop offset="100%" stop-color="#ff6b3d" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M0,20 Q25,8 50,20 Q75,32 100,20 Q125,8 150,20 Q175,32 200,20 Q225,8 250,20 Q275,32 300,20 Q325,8 350,20 Q375,32 400,20 Q425,8 450,20 Q475,32 500,20 Q525,8 550,20 Q575,32 600,20 Q625,8 650,20 Q675,32 700,20 Q725,8 750,20 Q775,32 800,20"
+          fill="none" stroke="url(#navSquiggleGradient)" stroke-width="5"
+          stroke-linecap="round" vector-effect="non-scaling-stroke" />
+      </svg>
+    </div>
   </header>
 
   <main class="main">
@@ -26,37 +49,53 @@
           <div class="about-header-text">
             <span class="section-label reveal">About</span>
             <h2 class="section-title reveal">
-              Hi, I'm Hannah — a product<br />
+              Hi, I'm Hannah, a product<br />
               designer based in Seattle.
             </h2>
 
             <p class="reveal">
-              I make both digital and physical things for a living and, somewhat
-              suspiciously, also for fun. When I'm not designing, I'm usually
-              gaming, rating a restaurant, or in my room making art.
+              Art came first. I've been painting for as long as I can
+              remember. Painting taught me what I use everyday: sit
+              with something long enough to see it properly. You put down a
+              mark, you step back, you realize that something is in the
+              wrong place, you do it again.
+            </p>
+
+            <p class="reveal">
+              To me, design works the same way. Research is the same act of
+              looking closely, just at people instead of a still life. I
+              take the craft as seriously as the thinking. A screen can do
+              everything it's supposed to and still feel like nobody cared,
+              and people pick up on that immediately.
+            </p>
+
+<p class="reveal">
+              I recently graduated with a master's in Human-Computer
+              Interaction + Design from the University of Washington.
+              Looking for my next team, let's&nbsp;chat!
             </p>
           </div>
 
-          <img class="about-portrait reveal" src="images/hannah-portrait.jpeg"
+          <img class="about-portrait reveal" src="images/hannah-portrait-square.jpeg"
                alt="Photo of Hannah Hatchett" />
-        </div>
-
-        <div class="about-currently reveal">
-          <span class="section-label">Currently</span>
-          <ul class="currently-list">
-            <li><span class="currently-key">Designing</span><span class="currently-val">AI-native tools that don't feel like spreadsheets</span></li>
-            <li><span class="currently-key">Listening</span><span class="currently-val">Heaven by mercury</span></li>
-            <li><span class="currently-key">Playing</span><span class="currently-val">VALORANT and Teamfight Tactics</span></li>
-          </ul>
         </div>
 
         <div class="about-cta reveal">
           <span class="section-label">Say hi</span>
-          <p>
-            I'm always up for a chat over a london fog (waaaaay better than
-            coffee). The fastest way to reach me is
-            <a href="mailto:hanhatchett@gmail.com" class="about-link">hanhatchett@gmail.com</a>.
-          </p>
+          <div class="about-social">
+            <a class="about-social-link" href="https://www.linkedin.com/in/hannahlhatchett"
+               target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a class="about-social-link" href="mailto:hanhatchett@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" />
+              </svg>
+              <span>hanhatchett@gmail.com</span>
+            </a>
+          </div>
         </div>
       </section>
 

@@ -29,105 +29,213 @@
 
   els.forEach((el) => io.observe(el));
 
-  // Animated selection cycler — Hannah's cursor "drags" the box to fit each word.
-  const cycler = document.querySelector(".selected-word-cycler");
-  if (cycler) {
-    const words = ["story telling", "problem solving", "creating experiences"];
-    // Per-word accent color: pink / green / purple
-    const wordColors = {
-      "story telling": "255, 77, 141",
-      "problem solving": "34, 197, 94",
-      "creating experiences": "147, 80, 232",
-    };
-    const textEl = cycler.querySelector(".selected-word-text");
-    const emEl = textEl.querySelector("em");
+  // Statement hero "selection" frame — measures the rendered headline and
+  // draws a Figma-style bounding box (corner handles + layer label + live
+  // dimensions) around it, with guide lines running the full width at the
+  // box's top/bottom edges. Recomputed on resize/font-load/keystroke since
+  // the text (and therefore the box) reflows as the edit loop below types.
+  const heroFrame = document.getElementById("heroFrame");
+  let layoutHeroFrame = null;
+  if (heroFrame) {
+    const band = document.querySelector(".statement-band");
+    const box = heroFrame.querySelector(".hero-frame-box");
+    const line1 = document.querySelector(".statement-line1");
+    const line2 = document.querySelector(".statement-line2");
+    const dimsLabel = heroFrame.querySelector(".hero-frame-dims");
+    const guideTop = heroFrame.querySelector(".hero-guide-top");
+    const guideBottom = heroFrame.querySelector(".hero-guide-bottom");
+    const PAD = 22;
 
-    // Hidden measurer span — copies the em's font so width measurements are accurate.
-    const measure = document.createElement("span");
-    measure.setAttribute("aria-hidden", "true");
-    measure.style.cssText =
-      "position:absolute; visibility:hidden; white-space:nowrap; pointer-events:none; top:0; left:0;";
-    document.body.appendChild(measure);
+    layoutHeroFrame = () => {
+      if (!band || !box || !line1 || !line2) return;
+      const bandRect = band.getBoundingClientRect();
+      const r1 = line1.getBoundingClientRect();
+      const r2 = line2.getBoundingClientRect();
+      const left = Math.min(r1.left, r2.left) - bandRect.left - PAD;
+      const top = Math.min(r1.top, r2.top) - bandRect.top - PAD;
+      const right = Math.max(r1.right, r2.right) - bandRect.left + PAD;
+      const bottom = Math.max(r1.bottom, r2.bottom) - bandRect.top + PAD;
+      const w = right - left;
+      const h = bottom - top;
 
-    const syncFont = () => {
-      const cs = getComputedStyle(emEl);
-      measure.style.font = cs.font;
-      measure.style.fontStyle = cs.fontStyle;
-      measure.style.fontWeight = cs.fontWeight;
-      measure.style.fontSize = cs.fontSize;
-      measure.style.fontFamily = cs.fontFamily;
-      measure.style.letterSpacing = cs.letterSpacing;
-    };
+      box.style.left = left + "px";
+      box.style.top = top + "px";
+      box.style.width = w + "px";
+      box.style.height = h + "px";
+      box.classList.add("is-ready");
 
-    const padX = () => {
-      const cs = getComputedStyle(cycler);
-      return (
-        parseFloat(cs.paddingLeft) +
-        parseFloat(cs.paddingRight) +
-        parseFloat(cs.borderLeftWidth) +
-        parseFloat(cs.borderRightWidth)
-      );
-    };
-
-    const widthFor = (word) => {
-      syncFont();
-      measure.textContent = word;
-      // Synthetic italic shears glyphs past the measured advance width, so
-      // pad the box width by a fraction of the font-size to fit the overhang.
-      const fontSize = parseFloat(getComputedStyle(emEl).fontSize) || 32;
-      const italicSlack = Math.ceil(fontSize * 0.28);
-      return Math.ceil(measure.getBoundingClientRect().width) + padX() + italicSlack;
+      if (dimsLabel) dimsLabel.textContent = Math.round(w) + " × " + Math.round(h);
+      if (guideTop) guideTop.style.top = top + "px";
+      if (guideBottom) guideBottom.style.top = bottom + "px";
     };
 
-    const applyAccent = (word) => {
-      const rgb = wordColors[word] || wordColors.brand;
-      cycler.style.setProperty("--accent-rgb", rgb);
-    };
-
-    const setWord = (word, animate = true) => {
-      if (!animate) {
-        const prev = cycler.style.transition;
-        cycler.style.transition = "none";
-        cycler.style.width = widthFor(word) + "px";
-        emEl.textContent = word;
-        applyAccent(word);
-        // Force reflow then restore transition.
-        void cycler.offsetWidth;
-        cycler.style.transition = prev;
-        return;
-      }
-      cycler.classList.add("dragging");
-      emEl.textContent = word;
-      applyAccent(word);
-      cycler.style.width = widthFor(word) + "px";
-    };
-
-    cycler.addEventListener("transitionend", (e) => {
-      if (e.propertyName === "width") cycler.classList.remove("dragging");
-    });
-
-    // Initial size, no animation.
-    const initial = () => setWord(words[0], false);
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(initial);
-    } else {
-      initial();
-    }
-
-    let i = 0;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!reduced) {
-      setInterval(() => {
-        i = (i + 1) % words.length;
-        setWord(words[i]);
-      }, 2200);
-    }
-
-    // Re-measure on resize so font-size changes (clamp) stay accurate.
-    window.addEventListener("resize", () => {
-      cycler.style.width = widthFor(emEl.textContent) + "px";
-    });
+    layoutHeroFrame();
+    window.addEventListener("resize", layoutHeroFrame);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutHeroFrame);
   }
+
+  // Statement hero "live edit" loop — the Hannah cursor selects the second
+  // line, deletes it, and retypes the other phrase, on repeat: a small,
+  // literal replay of adjusting a text box in a design tool, rather than a
+  // decorative crossfade. Skipped entirely under reduced motion (the markup
+  // already shows a static first phrase with no selection/caret visible).
+  (function () {
+    const band = document.querySelector(".statement-band");
+    const line2Inner = document.getElementById("statementLine2Inner");
+    const typedEl = document.getElementById("statementTyped");
+    const selectionEl = document.getElementById("statementSelection");
+    const caretEl = document.getElementById("statementCaret");
+    const cursor = document.getElementById("heroCursor");
+    if (!band || !line2Inner || !typedEl || !selectionEl || !caretEl || !cursor) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const PHRASES = [
+      "finding patterns hiding inside hard problems.",
+      "turning ambiguity into something tangible.",
+      "leading with research to develop magical experiences.",
+    ];
+    const DWELL_AFTER_TYPE = 1400;
+    const MOVE_DURATION = 280;
+    const SELECT_DURATION = 420;
+    const DWELL_SELECTED = 250;
+    const DELETE_DURATION = 130;
+    const TYPE_DELAY_MIN = 20;
+    const TYPE_DELAY_MAX = 44;
+    const REST_OFFSET_Y = 34;
+
+    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    // Fix the line to the width of its longer phrase so it never reflows
+    // the page mid-type — text grows from a fixed left edge instead of the
+    // whole block re-centering as it's typed.
+    const sizeLine = () => {
+      const probe = document.createElement("span");
+      const cs = getComputedStyle(typedEl);
+      probe.style.cssText =
+        "position:absolute;visibility:hidden;white-space:nowrap;top:-9999px;left:-9999px;";
+      probe.style.font = cs.font;
+      probe.style.letterSpacing = cs.letterSpacing;
+      document.body.appendChild(probe);
+      let max = 0;
+      PHRASES.forEach((p) => {
+        probe.textContent = p;
+        max = Math.max(max, probe.getBoundingClientRect().width);
+      });
+      document.body.removeChild(probe);
+      line2Inner.style.width = Math.ceil(max) + "px";
+      if (layoutHeroFrame) layoutHeroFrame();
+    };
+    sizeLine();
+    window.addEventListener("resize", sizeLine);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeLine);
+
+    const bandRelative = (rect) => {
+      const bandRect = band.getBoundingClientRect();
+      return { x: rect.left - bandRect.left, y: rect.top - bandRect.top, w: rect.width, h: rect.height };
+    };
+    const textMidY = () => {
+      const r = bandRelative(typedEl.getBoundingClientRect());
+      return r.y + r.h / 2;
+    };
+    const textStartX = () => bandRelative(typedEl.getBoundingClientRect()).x;
+    const textEndX = () => {
+      const r = bandRelative(typedEl.getBoundingClientRect());
+      return r.x + r.w;
+    };
+    // Position relative to line2Inner's own box rather than assuming the
+    // text starts flush at its left edge — needed since the text is
+    // centered within the (fixed-width) line, not left-anchored.
+    const localTextEdges = () => {
+      const c = line2Inner.getBoundingClientRect();
+      const t = typedEl.getBoundingClientRect();
+      return { left: t.left - c.left, right: t.right - c.left, width: t.width };
+    };
+    // One fixed idle spot, anchored to the (fixed-width) line box itself —
+    // not to the current text — so it's identical whether the line is full,
+    // empty, or mid-type, instead of drifting between two places.
+    const restPoint = () => {
+      const r = bandRelative(line2Inner.getBoundingClientRect());
+      return { x: r.x + r.w / 2 - 11, y: r.y + r.h / 2 + REST_OFFSET_Y };
+    };
+    const placeCursor = (x, y, durationMs) => {
+      cursor.style.transitionDuration = durationMs + "ms";
+      cursor.style.left = x + "px";
+      cursor.style.top = y + "px";
+    };
+    const click = async () => {
+      cursor.classList.add("is-clicking");
+      await wait(220);
+      cursor.classList.remove("is-clicking");
+    };
+
+    const selectLine = async () => {
+      const y = textMidY();
+      placeCursor(textStartX() - 6, y, MOVE_DURATION);
+      cursor.classList.add("is-ready");
+      await wait(MOVE_DURATION + 80);
+      await click();
+      const edges = localTextEdges();
+      selectionEl.style.transitionDuration = SELECT_DURATION + "ms";
+      selectionEl.style.opacity = "1";
+      selectionEl.style.left = edges.left + "px";
+      selectionEl.style.width = edges.width + "px";
+      placeCursor(textEndX() + 4, y, SELECT_DURATION);
+      await wait(SELECT_DURATION);
+      await wait(DWELL_SELECTED);
+    };
+
+    const deleteLine = async () => {
+      typedEl.style.transitionDuration = DELETE_DURATION + "ms";
+      typedEl.style.opacity = "0";
+      selectionEl.style.transitionDuration = DELETE_DURATION + "ms";
+      selectionEl.style.opacity = "0";
+      await wait(DELETE_DURATION);
+      typedEl.textContent = "";
+      typedEl.style.opacity = "1";
+      selectionEl.style.width = "0px";
+      if (layoutHeroFrame) layoutHeroFrame();
+      // Line's empty now — step the cursor to the one fixed rest spot
+      // instead of leaving it parked at the old (now-deleted) text's edge.
+      const rest = restPoint();
+      placeCursor(rest.x, rest.y, MOVE_DURATION);
+      await wait(MOVE_DURATION + 180);
+    };
+
+    const typeLine = async (text) => {
+      const y = textMidY();
+      placeCursor(textStartX() - 6, y, MOVE_DURATION);
+      await wait(MOVE_DURATION);
+      await click();
+      caretEl.style.left = localTextEdges().right + "px";
+      caretEl.classList.add("is-visible");
+      // Caret's placed — hand off to the keyboard and step back to rest for
+      // the whole typed stretch, instead of hovering over each character.
+      const rest = restPoint();
+      placeCursor(rest.x, rest.y, MOVE_DURATION);
+      for (let i = 0; i < text.length; i++) {
+        typedEl.textContent += text[i];
+        caretEl.style.left = localTextEdges().right + "px";
+        if (layoutHeroFrame) layoutHeroFrame();
+        await wait(TYPE_DELAY_MIN + Math.random() * (TYPE_DELAY_MAX - TYPE_DELAY_MIN));
+      }
+      await wait(220);
+      caretEl.classList.remove("is-visible");
+      // Cursor already stepped back to rest before typing started — stays put.
+    };
+
+    (async () => {
+      let idx = 0; // .statement-typed already renders PHRASES[0] server-side
+      // Give layout a beat to settle (fonts, initial frame box) before moving.
+      await wait(700);
+      while (true) {
+        await wait(DWELL_AFTER_TYPE);
+        await selectLine();
+        await deleteLine();
+        idx = (idx + 1) % PHRASES.length;
+        await typeLine(PHRASES[idx]);
+      }
+    })();
+  })();
 
   // Case-study hero(s): click / arrow keys / dots cycle through screenshots.
   document.querySelectorAll(".case-hero-viewer").forEach((heroViewer) => {
@@ -280,15 +388,5 @@
     );
     document.addEventListener("mouseleave", () => cursor.classList.add("hidden"));
     document.addEventListener("mouseenter", () => cursor.classList.remove("hidden"));
-  }
-
-  // Sticky top nav — toggle a bottom border once the user scrolls past the top.
-  const nav = document.querySelector(".site-nav");
-  if (nav) {
-    const onScroll = () => {
-      nav.classList.toggle("scrolled", window.scrollY > 6);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
   }
 })();

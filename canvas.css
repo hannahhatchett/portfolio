@@ -106,6 +106,9 @@
   transition: opacity 500ms var(--ease);
 }
 .cv-shot.is-active { opacity: 1; }
+/* Near-square capture — default top-aligned crop leaves dead space above
+   the menu and cuts it off below; center the crop instead. */
+.cv-shot[src*="haunted-heist-preview"] { object-position: center; }
 .cv-shot.is-mark {
   display: grid;
   place-items: center;
