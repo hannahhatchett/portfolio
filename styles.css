@@ -1033,6 +1033,11 @@ section { scroll-margin-top: 40px; }
   width: clamp(280px, 34vw, 480px);
   height: auto;
 }
+/* Circular badge mark — the default wordmark width makes a square logo
+   dominate the header, so cap it smaller. */
+.case-title-brand img[src*="bottlecap-title"] {
+  width: clamp(160px, 18vw, 220px);
+}
 .case-tagline {
   font-size: 20px;
   line-height: 1.5;
