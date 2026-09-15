@@ -454,4 +454,23 @@
     { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
   );
   sections.forEach((section) => io.observe(section));
+
+  // The nav is position:fixed and hidden by default (see styles.css) so it
+  // never appears above "What is Optimizely?" — reveal it only once the
+  // hero + "What I did" lead has fully scrolled past.
+  const lead = document.querySelector(".case-hero-lead");
+  if (lead && "IntersectionObserver" in window) {
+    const leadIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const pastHero = entry.boundingClientRect.bottom <= 0;
+          toc.classList.toggle("visible", pastHero);
+        });
+      },
+      { threshold: 0 }
+    );
+    leadIo.observe(lead);
+  } else {
+    toc.classList.add("visible");
+  }
 })();

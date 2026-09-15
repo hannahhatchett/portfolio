@@ -43,9 +43,76 @@
     </div>
   </header>
 
+  <!-- Top hero: sits full-width, centered on the page — the nav starts
+       after this, not beside it. -->
+  <section class="case-header main case-study reveal">
+    <div class="case-header-main">
+      <h1 class="case-title case-title-brand">
+        <img src="images/optimizely-title.png" alt="OnRamp" />
+      </h1>
+      <p class="case-tagline">Getting marketers to their first personalization campaign</p>
+
+      <div class="case-header-links">
+        <a class="case-header-link"
+           href="https://optimizely-personalization.vercel.app/optimizations"
+           target="_blank" rel="noopener">
+          View the prototype <span class="arrow">↗</span>
+        </a>
+        <a class="case-header-link"
+           href="https://www.youtube.com/watch?v=YEZNJpy6_EI"
+           target="_blank" rel="noopener">
+          Watch the concept video <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+    <aside class="case-meta">
+      <div class="meta-item">
+        <span class="meta-label">Client</span>
+        <span class="meta-value">Optimizely</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Role</span>
+        <span class="meta-value">Product Designer</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Team</span>
+        <span class="meta-value">
+          4-person MHCI+D capstone team<br />University of Washington
+        </span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Timeline</span>
+        <span class="meta-value">February – August 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Advisors</span>
+        <span class="meta-value">
+          Britt Hall, VP Product<br />
+          Brittany Butler, Senior PM
+        </span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- Shares the same column math as .case-layout below (so its text
+       lines up with the body content) without containing the nav, which
+       shouldn't appear until "What is Optimizely?". -->
+  <div class="case-hero-lead">
+    <div class="case-hero-role">
+      <span class="case-hero-role-label">What I Did</span>
+      <p>
+        I designed the campaign picker, and was a supporting designer on
+        the results page, where I ran the usability testing and worked out
+        what the page needed to show. I ran 4 of the 11 research
+        interviews and led synthesis, and I filmed and directed the
+        concept video.
+      </p>
+    </div>
+  </div>
+
   <div class="case-layout">
     <nav class="case-side-nav" aria-label="Jump to section">
-      <a href="#what">What</a>
+      <a href="#what">Optimizely</a>
       <a href="#challenge">Challenge</a>
       <a href="#solution">Solution</a>
       <a href="#impact">Impact</a>
@@ -55,68 +122,7 @@
       <a href="#reflection">Reflection</a>
     </nav>
 
-    <main class="main case-study case-study-stacked">
-
-      <!-- Top hero: project title + tagline + metadata -->
-      <section class="case-header reveal">
-        <div class="case-header-main">
-          <h1 class="case-title case-title-brand">
-            <img src="images/optimizely-title.png" alt="OnRamp" />
-          </h1>
-          <p class="case-tagline">Getting marketers to their first personalization campaign</p>
-
-          <div class="case-header-links">
-            <a class="case-header-link"
-               href="https://optimizely-personalization.vercel.app/optimizations"
-               target="_blank" rel="noopener">
-              View the prototype <span class="arrow">↗</span>
-            </a>
-            <a class="case-header-link"
-               href="https://www.youtube.com/watch?v=YEZNJpy6_EI"
-               target="_blank" rel="noopener">
-              Watch the concept video <span class="arrow">↗</span>
-            </a>
-          </div>
-
-          <div class="case-hero-role">
-            <span class="case-hero-role-label">What I Did</span>
-            <p>
-              I designed the campaign picker, and was a supporting designer
-              on the results page, where I ran the usability testing and
-              worked out what the page needed to show. I ran 4 of the 11
-              research interviews and led synthesis, and I filmed and
-              directed the concept video.
-            </p>
-          </div>
-        </div>
-        <aside class="case-meta">
-          <div class="meta-item">
-            <span class="meta-label">Client</span>
-            <span class="meta-value">Optimizely</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Role</span>
-            <span class="meta-value">Product Designer</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Team</span>
-            <span class="meta-value">
-              4-person MHCI+D capstone team<br />University of Washington
-            </span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Timeline</span>
-            <span class="meta-value">February – August 2026</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Advisors</span>
-            <span class="meta-value">
-              Britt Hall, VP Product<br />
-              Brittany Butler, Senior PM
-            </span>
-          </div>
-        </aside>
-      </section>
+    <main class="case-body main case-study case-study-stacked">
 
       <!-- WHAT -->
       <section class="case-row" id="what">
@@ -126,9 +132,13 @@
             Optimizely is a digital experience platform for A/B testing and
             website personalization. It sits between a company's marketing
             team and that company's customers, deciding which version of a
-            page each visitor sees. Optimizely is trusted by 10,000+ brands,
-            including Alaska Airlines, Nike, Salesforce, Visa, and Zoom.
+            page each visitor sees.
           </p>
+
+          <div class="case-trusted-by">
+            <span class="case-trusted-by-label">Trusted by 10,000+ brands</span>
+            <p>Alaska Airlines, Nike, Salesforce, Visa, and Zoom</p>
+          </div>
         </div>
       </section>
 
@@ -406,9 +416,6 @@
               stopped them is still there, now with more options attached to
               it.
             </p>
-          </div>
-
-          <div class="phase-block">
             <p>
               The problem I was solving was to give a marketer campaigns they
               can launch today, without making them understand their whole
@@ -538,6 +545,6 @@
     <img id="lightboxImg" src="" alt="" />
   </div>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
