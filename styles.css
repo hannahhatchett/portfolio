@@ -1349,7 +1349,16 @@ section { scroll-margin-top: 40px; }
 }
 .phase-finding { margin-bottom: 32px; }
 .phase-finding:last-child { margin-bottom: 0; }
-.phase-finding .case-quote { margin: 32px 0; padding: 20px 0 20px 28px; }
+.phase-block .case-quote { margin: 32px 0; padding: 20px 0 20px 28px; }
+.finding-number {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ff6b3d;
+  vertical-align: 2px;
+}
 
 /* Pull quote — research verbatims. Sits inside .case-row-body. */
 .case-quote {
