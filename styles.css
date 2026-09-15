@@ -1070,47 +1070,54 @@ section { scroll-margin-top: 40px; }
   margin-top: 32px;
 }
 .case-header-links .case-header-link { margin-top: 0; }
-/* "What I did" — its own labeled block under the hero, set off with a
-   rule so it reads as a distinct beat rather than a trailing paragraph. */
+/* "What I did" — a bolder, unmissable beat inside the hero itself,
+   not a trailing paragraph after it. */
 .case-hero-role {
-  margin: 48px 0 0;
-  padding-top: 32px;
+  margin: 40px 0 0;
+  padding-top: 28px;
   border-top: 1px solid var(--line);
   max-width: 62ch;
 }
 .case-hero-role-label {
   display: block;
-  font-size: 11px;
-  letter-spacing: 0.22em;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ink-muted);
-  margin-bottom: 12px;
+  color: #ff6b3d;
+  margin-bottom: 10px;
 }
 .case-hero-role p {
   margin: 0;
-  font-size: 17px;
+  font-size: 19px;
   line-height: 1.6;
-  color: var(--ink-soft);
+  font-weight: 500;
+  color: var(--ink);
 }
 
-/* Two-column page layout: a persistent vertical jump nav on the left,
-   the case study centered in the remaining space. */
+/* Page layout: a symmetric 3-column grid so the middle (content) column
+   is genuinely centered in the viewport — the nav lives in the left
+   gutter rather than pulling the whole [nav + content] unit off-center. */
 .case-layout {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 56px;
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  align-items: start;
 }
-.case-layout .main.case-study { margin: 0; }
+.case-layout .main.case-study {
+  grid-column: 2;
+  margin: 0 auto;
+}
 
 /* Vertical jump nav — same bg-card capsule + solid-pill-for-current-item
    language as .site-nav-links, stacked instead of inline. */
 .case-side-nav {
+  grid-column: 1;
+  justify-self: start;
+  width: fit-content;
   position: sticky;
   top: 50vh;
   transform: translateY(-50%);
   z-index: 40;
-  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -1138,7 +1145,8 @@ section { scroll-margin-top: 40px; }
 /* Below ~1060px there isn't room for a persistent left rail — collapse it
    into a horizontal capsule that sits above the content instead. */
 @media (max-width: 1060px) {
-  .case-layout { flex-direction: column; align-items: stretch; gap: 0; }
+  .case-layout { display: block; }
+  .case-layout .main.case-study { margin: 0 auto; }
   .case-side-nav {
     position: sticky;
     top: 88px;
@@ -1616,7 +1624,7 @@ video.case-media-board[src*="haunted-heist-preview"] {
   border-radius: var(--radius-media);
   overflow: hidden;
   background: #000;
-  margin: 0 0 36px;
+  margin: 56px 0 36px;
 }
 .case-video-embed iframe {
   position: absolute;
