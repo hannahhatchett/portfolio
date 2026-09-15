@@ -1298,49 +1298,6 @@ section { scroll-margin-top: 40px; }
 }
 .case-row-body p:last-child { margin-bottom: 0; }
 
-/* "Trusted by" credibility line — set off from the descriptive paragraph
-   so the brand names actually register instead of trailing off a sentence. */
-.case-trusted-by {
-  margin-top: 32px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-}
-.case-trusted-by-label {
-  display: block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin-bottom: 8px;
-}
-/* Auto-scrolling brand strip, mimicking the moving logo carousel on
-   optimizely.com — using text instead of their logo marks. */
-.case-trusted-by-marquee {
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-}
-.case-trusted-by-track {
-  display: flex;
-  width: max-content;
-  gap: 56px;
-  animation: case-trusted-marquee 16s linear infinite;
-}
-.case-trusted-by-track span {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--ink);
-  white-space: nowrap;
-}
-@keyframes case-trusted-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .case-trusted-by-track { animation: none; }
-}
-
 /* Phase rows */
 .phase-eyebrow {
   display: block;
