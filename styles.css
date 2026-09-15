@@ -1119,26 +1119,22 @@ section { scroll-margin-top: 40px; }
    grid/sticky quirk above. Hidden until the hero (title through "What I
    did") has fully scrolled past, via the IntersectionObserver in
    script.js, so it never appears above "What is Optimizely?". */
+/* Its "top" is computed in script.js on every scroll: centered in the
+   viewport by default, but clamped so it can never render above "What is
+   Optimizely?" — it rests at that section's edge as you scroll up rather
+   than jumping there or disappearing, and when that clamp pushes it below
+   the viewport (still up in the hero) it's simply off-screen — no opacity
+   toggle needed, and nothing to lag behind the scroll. */
 .case-side-nav {
   position: fixed;
   left: 56px;
   top: 50%;
-  transform: translateY(-50%);
   z-index: 40;
   display: flex;
   flex-direction: column;
   gap: 6px;
   font-size: 13px;
   font-weight: 500;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 220ms var(--ease);
-}
-.case-side-nav.visible {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
 }
 .case-side-nav a {
   padding: 5px 0 5px 15px;

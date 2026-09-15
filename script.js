@@ -455,24 +455,43 @@
   );
   sections.forEach((section) => io.observe(section));
 
-  // The nav is position:fixed and hidden by default (see styles.css) so it
-  // never overlaps the hero. It shows as soon as the hero + "What I did"
-  // lead has scrolled past, and stays visible through ordinary scrolling
-  // in either direction within the body content — it only hides again if
-  // you scroll all the way back up into the hero itself.
+  // The nav is position:fixed and vertically centered by default, but it
+  // must never render above "What is Optimizely?". Rather than toggling
+  // visibility (which either pops it in/out or, with CSS Grid + sticky,
+  // let it escape its own container's bounds — both tried and dropped),
+  // its on-screen "top" is recomputed on every scroll: centered normally,
+  // but clamped to never go above the hero + "What I did" lead's bottom
+  // edge. When that clamp pushes it below the current viewport (still up
+  // in the hero), it's simply off-screen — no separate hide/show state.
+  // Scrolling back down lets the clamp relax and it recenters smoothly.
   const lead = document.querySelector(".case-hero-lead");
-  if (lead && "IntersectionObserver" in window) {
-    const leadIo = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const pastHero = entry.boundingClientRect.bottom <= 0;
-          toc.classList.toggle("visible", pastHero);
-        });
-      },
-      { threshold: 0 }
-    );
-    leadIo.observe(lead);
-  } else {
-    toc.classList.add("visible");
+  const footer = document.querySelector(".case-body .footer");
+  const wideLayout = window.matchMedia("(min-width: 1061px)");
+  if (lead && wideLayout) {
+    let ticking = false;
+    const position = () => {
+      ticking = false;
+      if (!wideLayout.matches) {
+        toc.style.top = "";
+        return;
+      }
+      const navHeight = toc.offsetHeight;
+      const leadBottom = lead.getBoundingClientRect().bottom;
+      const centered = (window.innerHeight - navHeight) / 2;
+      let top = Math.max(centered, leadBottom + 24);
+      if (footer) {
+        const footerTop = footer.getBoundingClientRect().top;
+        top = Math.min(top, footerTop - navHeight - 24);
+      }
+      toc.style.top = top + "px";
+    };
+    const requestPosition = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(position);
+    };
+    position();
+    window.addEventListener("scroll", requestPosition, { passive: true });
+    window.addEventListener("resize", requestPosition);
   }
 })();
