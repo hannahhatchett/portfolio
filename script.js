@@ -390,3 +390,68 @@
     document.addEventListener("mouseenter", () => cursor.classList.remove("hidden"));
   }
 })();
+
+// Click-to-enlarge lightbox for case study photos.
+(function () {
+  const lightbox = document.getElementById("lightbox");
+  if (!lightbox) return;
+  const lightboxImg = document.getElementById("lightboxImg");
+  const closeBtn = lightbox.querySelector(".lightbox-close");
+
+  const open = (src, alt) => {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "";
+    lightbox.hidden = false;
+    requestAnimationFrame(() => lightbox.classList.add("open"));
+    document.body.style.overflow = "hidden";
+  };
+  const close = () => {
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+    setTimeout(() => {
+      lightbox.hidden = true;
+    }, 240);
+  };
+
+  document
+    .querySelectorAll(
+      ".case-media-board img, .case-media-crop img, img.case-media-inline, img.case-media-tile"
+    )
+    .forEach((img) => {
+      img.addEventListener("click", () => open(img.src, img.alt));
+    });
+
+  closeBtn.addEventListener("click", close);
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("open")) close();
+  });
+})();
+
+// Case-study jump nav — highlights whichever section is currently in view,
+// matching the solid-pill "active" treatment on the site's main nav.
+(function () {
+  const toc = document.querySelector(".case-toc");
+  if (!toc) return;
+  const links = Array.from(toc.querySelectorAll("a[href^='#']"));
+  const sections = links
+    .map((a) => document.getElementById(a.getAttribute("href").slice(1)))
+    .filter(Boolean);
+  if (!sections.length || !("IntersectionObserver" in window)) return;
+
+  const setActive = (id) => {
+    links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+  };
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+  );
+  sections.forEach((section) => io.observe(section));
+})();

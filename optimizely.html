@@ -104,14 +104,16 @@
       </section>
 
       <nav class="case-toc" aria-label="Jump to section">
-        <a href="#what">What</a>
-        <a href="#challenge">Challenge</a>
-        <a href="#solution">Solution</a>
-        <a href="#impact">Impact</a>
-        <a href="#research">Research</a>
-        <a href="#campaign-picker">Campaign picker</a>
-        <a href="#results-page">Results page</a>
-        <a href="#reflection">Reflection</a>
+        <div class="case-toc-track">
+          <a href="#what">What</a>
+          <a href="#challenge">Challenge</a>
+          <a href="#solution">Solution</a>
+          <a href="#impact">Impact</a>
+          <a href="#research">Research</a>
+          <a href="#campaign-picker">Campaign picker</a>
+          <a href="#results-page">Results page</a>
+          <a href="#reflection">Reflection</a>
+        </div>
       </nav>
 
       <!-- WHAT -->
@@ -148,12 +150,6 @@
             that needs a developer. This confuses the marketer, causing them
             to drift back to the A/B testing they already understand.
           </p>
-
-          <div class="case-stat-solo">
-            <span class="stat-desc">Only</span>
-            <span class="stat-number">10–20%</span>
-            <span class="stat-desc">of customers who pay for personalization ever use it</span>
-          </div>
 
           <blockquote class="case-quote">
             <p>
@@ -207,11 +203,6 @@
               </tr>
             </tbody>
           </table>
-
-          <figure class="case-media-inline case-media-board">
-            <img src="images/optimizely-solution-flow.png"
-                 alt="Dashboard nudge — the drafted campaign prompt on the experiments page marketers already use" />
-          </figure>
 
           <div class="case-video-embed">
             <iframe
@@ -537,6 +528,13 @@
       </footer>
   </main>
 
-  <script src="script.js?v=2"></script>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" hidden>
+    <button class="lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+    </button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script src="script.js?v=3"></script>
 </body>
 </html>
