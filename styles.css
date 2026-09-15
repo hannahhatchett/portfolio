@@ -1635,6 +1635,7 @@ div.case-media-inline::before {
   padding: 28px;
   display: block;
 }
+.case-media-lead { margin-top: 40px; }
 .case-media-board img,
 video.case-media-board {
   display: block;
