@@ -433,7 +433,7 @@
 // Case-study jump nav — highlights whichever section is currently in view,
 // matching the solid-pill "active" treatment on the site's main nav.
 (function () {
-  const toc = document.querySelector(".case-toc");
+  const toc = document.querySelector(".case-side-nav");
   if (!toc) return;
   const links = Array.from(toc.querySelectorAll("a[href^='#']"));
   const sections = links

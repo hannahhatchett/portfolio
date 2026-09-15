@@ -43,7 +43,19 @@
     </div>
   </header>
 
-  <main class="main case-study">
+  <div class="case-layout">
+    <nav class="case-side-nav" aria-label="Jump to section">
+      <a href="#what">What</a>
+      <a href="#challenge">Challenge</a>
+      <a href="#solution">Solution</a>
+      <a href="#impact">Impact</a>
+      <a href="#research">Research</a>
+      <a href="#campaign-picker">Campaign picker</a>
+      <a href="#results-page">Results page</a>
+      <a href="#reflection">Reflection</a>
+    </nav>
+
+    <main class="main case-study case-study-stacked">
 
       <!-- Top hero: project title + tagline + metadata -->
       <section class="case-header reveal">
@@ -65,14 +77,6 @@
               Watch the concept video <span class="arrow">↗</span>
             </a>
           </div>
-
-          <p class="case-hero-role">
-            <strong>What I did.</strong> I designed the campaign picker, and
-            was a supporting designer on the results page, where I ran the
-            usability testing and worked out what the page needed to show. I
-            ran 4 of the 11 research interviews and led synthesis, and I
-            filmed and directed the concept video.
-          </p>
         </div>
         <aside class="case-meta">
           <div class="meta-item">
@@ -91,7 +95,7 @@
           </div>
           <div class="meta-item">
             <span class="meta-label">Timeline</span>
-            <span class="meta-value">February – September 2026</span>
+            <span class="meta-value">February – August 2026</span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Advisors</span>
@@ -103,22 +107,20 @@
         </aside>
       </section>
 
-      <nav class="case-toc" aria-label="Jump to section">
-        <div class="case-toc-track">
-          <a href="#what">What</a>
-          <a href="#challenge">Challenge</a>
-          <a href="#solution">Solution</a>
-          <a href="#impact">Impact</a>
-          <a href="#research">Research</a>
-          <a href="#campaign-picker">Campaign picker</a>
-          <a href="#results-page">Results page</a>
-          <a href="#reflection">Reflection</a>
-        </div>
-      </nav>
+      <div class="case-hero-role">
+        <span class="case-hero-role-label">What I Did</span>
+        <p>
+          I designed the campaign picker, and was a supporting designer on
+          the results page, where I ran the usability testing and worked out
+          what the page needed to show. I ran 4 of the 11 research
+          interviews and led synthesis, and I filmed and directed the
+          concept video.
+        </p>
+      </div>
 
       <!-- WHAT -->
       <section class="case-row" id="what">
-        <h2 class="case-row-title">What</h2>
+        <h2 class="case-row-title">What is Optimizely?</h2>
         <div class="case-row-body">
           <p>
             Optimizely is a digital experience platform for A/B testing and
@@ -127,11 +129,6 @@
             page each visitor sees. Optimizely is trusted by 10,000+ brands,
             including Alaska Airlines, Nike, Salesforce, Visa, and Zoom.
           </p>
-          <p>
-            We were asked to design more agentic personalization features for
-            Opal, Optimizely's AI platform, on the premise that
-            personalization took too much manual work.
-          </p>
         </div>
       </section>
 
@@ -139,6 +136,11 @@
       <section class="case-row" id="challenge">
         <h2 class="case-row-title">Challenge</h2>
         <div class="case-row-body">
+          <p>
+            We were asked to design more agentic personalization features for
+            Opal, Optimizely's AI platform, on the premise that
+            personalization took too much manual work.
+          </p>
           <p>
             That premise did not survive research. We learned companies are
             buying personalization and almost none of them use it at all.
@@ -526,7 +528,8 @@
         <span>© 2026 Hannah Hatchett</span>
         <span>Seattle, WA</span>
       </footer>
-  </main>
+    </main>
+  </div>
 
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" hidden>
     <button class="lightbox-close" aria-label="Close">
