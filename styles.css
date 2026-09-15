@@ -1626,14 +1626,6 @@ video.case-media-board[src*="haunted-heist-preview"] {
   display: block;
   max-width: none;
 }
-.optimizely-research-crop {
-  aspect-ratio: 570 / 420;
-}
-.optimizely-research-crop img {
-  width: 458.6%;
-  left: -125.6%;
-  top: -28.1%;
-}
 
 /* Click-to-enlarge affordance — only where a lightbox actually exists on
    the page, so other case studies aren't left with a cursor that lies. */
