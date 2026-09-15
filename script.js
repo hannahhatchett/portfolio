@@ -456,15 +456,19 @@
   sections.forEach((section) => io.observe(section));
 
   // The nav is position:fixed and hidden by default (see styles.css) so it
-  // never appears above "What is Optimizely?" — reveal it only once the
-  // hero + "What I did" lead has fully scrolled past.
+  // never appears above "What is Optimizely?" on first load. Once the
+  // reader has scrolled past the hero + "What I did" lead a single time,
+  // reveal it for good — scrolling back up to re-read the hero shouldn't
+  // make it disappear again.
   const lead = document.querySelector(".case-hero-lead");
   if (lead && "IntersectionObserver" in window) {
     const leadIo = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const pastHero = entry.boundingClientRect.bottom <= 0;
-          toc.classList.toggle("visible", pastHero);
+          if (entry.boundingClientRect.bottom <= 0) {
+            toc.classList.add("visible");
+            leadIo.disconnect();
+          }
         });
       },
       { threshold: 0 }
