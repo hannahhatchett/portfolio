@@ -1076,7 +1076,7 @@ section { scroll-margin-top: 40px; }
 .case-hero-lead { padding: 0 56px; }
 .case-hero-lead .case-hero-role {
   max-width: 1128px;
-  margin: 80px auto 80px 276px;
+  margin: 80px auto 80px max(276px, calc((100vw - 1404px) / 2 + 276px));
 }
 @media (max-width: 1060px) {
   .case-hero-lead { padding: 0; }
@@ -1100,16 +1100,18 @@ section { scroll-margin-top: 40px; }
   color: var(--ink);
 }
 
-/* Page layout, starting below the hero: the case study is offset by a
-   fixed amount (matching the nav's reserved space) and centered in
-   whatever remains to the right of that — not the full viewport, and not
-   sharing a single centered unit with the nav. Plain margin math instead
-   of grid, since sticky positioning inside a CSS Grid track whose sibling
-   is page-length produced inconsistent containing-block bounds. */
+/* Page layout, starting below the hero: the case study reserves a fixed
+   276px gutter for the nav below ~1404px of available width (unchanged
+   from a plain fixed margin), but above that the reserved gutter plus
+   the 1128px content are centered together as one 1404px unit, so extra
+   width splits evenly left/right instead of piling up on the right on
+   wide screens. Plain margin math instead of grid, since sticky
+   positioning inside a CSS Grid track whose sibling is page-length
+   produced inconsistent containing-block bounds. */
 .case-layout { position: relative; }
 .case-layout .case-body.main.case-study {
   max-width: 1128px;
-  margin: 0 auto 0 276px;
+  margin: 0 auto 0 max(276px, calc((100vw - 1404px) / 2 + 276px));
   padding-top: 0;
   padding-left: 56px;
   padding-right: 56px;
@@ -1127,7 +1129,7 @@ section { scroll-margin-top: 40px; }
    toggle needed, and nothing to lag behind the scroll. */
 .case-side-nav {
   position: fixed;
-  left: 56px;
+  left: max(56px, calc((100vw - 1404px) / 2 + 56px));
   top: 50%;
   z-index: 40;
   display: flex;
