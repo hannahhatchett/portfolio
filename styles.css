@@ -1076,7 +1076,7 @@ section { scroll-margin-top: 40px; }
 .case-hero-lead { padding: 0 56px; }
 .case-hero-lead .case-hero-role {
   max-width: 1128px;
-  margin: 80px auto 80px max(276px, calc((100vw - 1404px) / 2 + 276px));
+  margin: 80px auto 80px max(276px, calc((100vw - 1128px) / 2));
 }
 @media (max-width: 1060px) {
   .case-hero-lead { padding: 0; }
@@ -1100,18 +1100,20 @@ section { scroll-margin-top: 40px; }
   color: var(--ink);
 }
 
-/* Page layout, starting below the hero: the case study reserves a fixed
-   276px gutter for the nav below ~1404px of available width (unchanged
-   from a plain fixed margin), but above that the reserved gutter plus
-   the 1128px content are centered together as one 1404px unit, so extra
-   width splits evenly left/right instead of piling up on the right on
-   wide screens. Plain margin math instead of grid, since sticky
-   positioning inside a CSS Grid track whose sibling is page-length
-   produced inconsistent containing-block bounds. */
+/* Page layout, starting below the hero: below ~1680px of available width
+   there isn't room to both reserve the nav's 276px gutter and truly
+   center the 1128px content, so the gutter wins (a plain fixed margin,
+   as before). Above that width there's slack either way, so the content
+   is truly centered in the viewport instead — margin-left tracks
+   (100vw - 1128px) / 2 rather than staying pinned to 276px, which is
+   what let extra width pile up on the right on wide screens. Plain
+   margin math instead of grid, since sticky positioning inside a CSS
+   Grid track whose sibling is page-length produced inconsistent
+   containing-block bounds. */
 .case-layout { position: relative; }
 .case-layout .case-body.main.case-study {
   max-width: 1128px;
-  margin: 0 auto 0 max(276px, calc((100vw - 1404px) / 2 + 276px));
+  margin: 0 auto 0 max(276px, calc((100vw - 1128px) / 2));
   padding-top: 0;
   padding-left: 56px;
   padding-right: 56px;
@@ -1129,7 +1131,7 @@ section { scroll-margin-top: 40px; }
    toggle needed, and nothing to lag behind the scroll. */
 .case-side-nav {
   position: fixed;
-  left: max(56px, calc((100vw - 1404px) / 2 + 56px));
+  left: max(56px, calc((100vw - 1128px) / 2 - 220px));
   top: 50%;
   z-index: 40;
   display: flex;
