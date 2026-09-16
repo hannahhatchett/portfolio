@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body class="case-study-page">
   <header class="site-nav">
@@ -43,183 +43,203 @@
     </div>
   </header>
 
-  <main class="main case-study">
+  <!-- Top hero: sits full-width, centered on the page — the nav starts
+       after this, not beside it. -->
+  <section class="case-header main case-study reveal">
+    <div class="case-header-main">
+      <h1 class="case-title case-title-brand">
+        <img src="images/haunted-heist-title.png" alt="Haunted Heist" />
+      </h1>
+      <p class="case-tagline">An open UX audit for Autotroph's upcoming party game</p>
 
-      <!-- Top hero: project title + tagline + metadata -->
-      <section class="case-header reveal">
-        <div class="case-header-main">
-          <h1 class="case-title case-title-brand">
-            <img src="images/haunted-heist-title.png" alt="Haunted Heist" />
-          </h1>
-          <a class="case-header-link"
-             href="https://store.steampowered.com/app/4024440/Haunted_Heist/"
-             target="_blank" rel="noopener">
-            View on Steam <span class="arrow">↗</span>
-          </a>
-        </div>
-        <aside class="case-meta">
-          <div class="meta-item">
-            <span class="meta-label">Client</span>
-            <span class="meta-value">Autotroph Games</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Role</span>
-            <span class="meta-value">
-              UX Consultant — owned the settings menu redesign; contributed
-              design direction for the lobby, loading screens, and leaderboard.
-            </span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Timeline</span>
-            <span class="meta-value">May 2026 – Present</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Status</span>
-            <span class="meta-value">
-              Releases on Steam October 12, 2026.
-            </span>
-          </div>
-        </aside>
-      </section>
+      <div class="case-header-links">
+        <a class="case-header-link"
+           href="https://store.steampowered.com/app/4024440/Haunted_Heist/"
+           target="_blank" rel="noopener">
+          View on Steam <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+    <aside class="case-meta">
+      <div class="meta-item">
+        <span class="meta-label">Client</span>
+        <span class="meta-value">Autotroph Games</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Role</span>
+        <span class="meta-value">UX Consultant</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Timeline</span>
+        <span class="meta-value">May 2026 – present</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Status</span>
+        <span class="meta-value">Launches on Steam October 12, 2026</span>
+      </div>
+    </aside>
+  </section>
 
-      <figure class="case-hero case-hero-static">
-        <img src="images/haunted-heist-hero.jpg" alt="Heisters and Tricksters caught mid-scramble in the mansion" />
-      </figure>
+  <!-- Shares the same column math as .case-layout below (so its text
+       lines up with the body content) without containing the nav, which
+       shouldn't appear until "What is Haunted Heist?". -->
+  <div class="case-hero-lead">
+    <div class="case-hero-role">
+      <span class="case-hero-role-label">What I Did</span>
+      <p>
+        Autotroph asked for an open UX audit, and I chose where to focus.
+        I owned the settings menu redesign and made changes to the
+        interaction design for lobby role selection. Both shipped.
+      </p>
+    </div>
+  </div>
 
-      <!-- WHAT IS HAUNTED HEIST -->
-      <section class="case-row">
+  <div class="case-layout">
+    <nav class="case-side-nav" aria-label="Jump to section">
+      <a href="#what">Haunted Heist</a>
+      <a href="#challenge">Challenge</a>
+      <a href="#solution">Solution</a>
+      <a href="#impact">Impact</a>
+      <a href="#settings-menu">Settings menu</a>
+      <a href="#lobby">Lobby role selection</a>
+      <a href="#reflection">Reflection</a>
+    </nav>
+
+    <main class="case-body main case-study case-study-stacked">
+
+      <!-- WHAT -->
+      <section class="case-row" id="what">
         <h2 class="case-row-title">What is Haunted Heist?</h2>
         <div class="case-row-body">
           <p>
-            Haunted Heist is a round-based PvP horror party game where
-            Heisters race to collect gems in a procedurally generated mansion
-            while Tricksters use chaotic abilities to derail, harass, and
-            scare them away from victory.
+            Haunted Heist is a round-based PvP horror party game. Heisters
+            race to collect gems in a procedurally generated mansion while
+            Tricksters use abilities to scare them off and derail the run.
+            <strong>Haunted Heist has 50,000+ wishlists on Steam ahead of
+            launch.</strong>
           </p>
         </div>
       </section>
 
-      <!-- THE CHALLENGE -->
-      <section class="case-row">
-        <h2 class="case-row-title">The Challenge</h2>
+      <!-- CHALLENGE -->
+      <section class="case-row" id="challenge">
+        <h2 class="case-row-title">Challenge</h2>
+        <div class="case-row-body">
+          <p>With an open scope, Autotroph commissioned a UX audit.</p>
+          <p>
+            Game developers typically concentrate their playtesting efforts
+            on core systems that draw immediate player feedback, such as
+            combat mechanics and movement dynamics. Settings and the lobby
+            are used by every player and tested by almost no one. At launch,
+            those screens matter more than they look. A wishlist isn't a
+            player yet. Steam refunds any game played for under two hours, so
+            a new player's first session, much of it affected by menus and
+            navigation experience, decides whether the game stays in their
+            library.
+          </p>
+          <p>I prioritized evaluating those areas during the audit.</p>
+        </div>
+      </section>
+
+      <!-- SOLUTION -->
+      <section class="case-row" id="solution">
+        <h2 class="case-row-title">Solution</h2>
+        <div class="case-row-body">
+          <table class="case-table">
+            <thead>
+              <tr>
+                <th>What I found</th>
+                <th>What I designed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Each settings tab used inconsistent typography and
+                  structural hierarchy, forcing players to re-orient
+                  themselves every time they navigated to a different tab.
+                </td>
+                <td>
+                  One structure across all four tabs, grouped by what a
+                  player is looking for.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Players changed roles by clicking through arrows, which was
+                  slow and took up space in a crowded lobby menu.
+                </td>
+                <td>A new interaction model for the pre-game experience.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="case-media-caption">Final screens will be shared post-launch.</p>
+        </div>
+      </section>
+
+      <!-- IMPACT -->
+      <section class="case-row" id="impact">
+        <h2 class="case-row-title">Impact</h2>
         <div class="case-row-body">
           <p>
-            The parts of a game that get playtested are the ones players
-            notice: combat, movement, multiplayer, the core loop. Settings,
-            the lobby, and the wait between matches get touched by every
-            player but rarely get the same attention. They're infrastructure,
-            not features, so they're easy to overlook until a player is stuck
-            in one.
-          </p>
-          <p>
-            That matters most at launch. A wishlist isn't a player yet. It's
-            someone who will decide in their first few minutes whether to
-            keep going or refund the game. Menus that keep a player stuck lead
-            to refunds.
+            The settings menu shipped on my information architecture, with
+            Autotroph applying the final visual styling. Drag-and-drop role
+            selection shipped after we combined my interaction model with the
+            head-to-head layout Autotroph wanted to keep.
           </p>
         </div>
       </section>
 
-      <!-- THE SOLUTION -->
-      <section class="case-row">
-        <h2 class="case-row-title">The Solution</h2>
-        <div class="case-row-body">
-          <p>
-            I rebuilt the settings menu around one structure a player learns
-            once, redesigned the lobby so you pick a role by dragging your
-            character onto it instead of clunky arrows, and proposed a
-            loading screen that uses the wait to give you tips. A leaderboard
-            is next.
-          </p>
-        </div>
-      </section>
+      <div class="case-divider" role="separator">
+        <span>How We Got There</span>
+      </div>
 
-      <!-- THE OUTCOME -->
-      <section class="case-row">
-        <h2 class="case-row-title">The Outcome</h2>
-        <div class="case-row-body">
-          <p>
-            The settings menu shipped on the information architecture I
-            designed, with Autotroph applying the final visual styling
-            in-house. The lobby's drag-and-drop role selection shipped after
-            Autotroph and I reconciled my interaction model with the
-            head-to-head symmetry they wanted to keep. The loading screen and
-            the rest of the lobby changes, including a leave confirmation
-            backed by a three-person test in which every participant
-            misfired, are still in development ahead of the October 12
-            release.
-          </p>
-        </div>
-      </section>
-
-      <!-- PHASE 1 -->
-      <section class="case-row case-phase">
+      <!-- 01 SETTINGS MENU -->
+      <section class="case-row case-phase" id="settings-menu">
         <div class="case-row-title">
-          <span class="phase-eyebrow">Phase 01</span>
-          <h2>Settings Menu Redesign</h2>
+          <span class="phase-eyebrow">01</span>
+          <h2>Settings Menu</h2>
         </div>
         <div class="case-row-body">
-          <p><em>Shipped in the build.</em></p>
-
           <div class="phase-block">
             <p>
-              The settings menu had grown a tab at a time, and each tab had
-              been built to its own logic. Video had no grouping between
-              display settings and quality settings, its header text shrank
-              inconsistently below Graphics, and it had no reset. Audio had
-              no section headers at all, so voice chat controls sat mixed in
-              with master volume. Gameplay was the only tab with section
-              headers, which was correct, and which also made it the odd one
-              out.
+              A player switching tabs had to relearn the menu each time
+              because visual hierarchy didn't transfer consistently across
+              tabs — some had clear headers while others lacked them
+              entirely.
             </p>
             <p>
-              The result was a menu that asked players to relearn its logic
-              every time they switched tabs. I needed one structure that held
-              across all four tabs, organized around what a player is
-              actually looking for rather than how the settings happened to
-              be filed.
+              Video didn't separate display settings from quality settings,
+              its header text sizes were inconsistent, and it had no reset.
+              Audio had no section headers, so voice chat controls sat mixed
+              in with master volume. Gameplay was the only tab with section
+              headers. It was right, and that made it the odd one out.
             </p>
-            <p>
-              <strong>Design problem:</strong> give four tabs a single form,
-              without losing what each one already did well.
-            </p>
+            <figure class="case-media-inline case-media-board">
+              <img src="images/haunted-heist-settings-audit.jpg"
+                   alt="Annotated screenshots of the original four settings tabs" />
+            </figure>
           </div>
 
           <div class="phase-block">
-            <img class="case-media-inline case-media-board"
-                 src="images/haunted-heist-settings-audit.jpg"
-                 alt="Annotated audit of the four original settings tabs — Video, Audio, Gameplay, and Controls" />
             <p>
-              I started by screenshotting every tab and annotating it
-              directly, marking where the hierarchy broke down and where a
-              tab did something the others didn't. Once that audit was done,
-              I studied the settings menus of five other multiplayer games to
-              see how their hierarchies were structured and how they were
-              presented.
+              I screenshotted every tab and marked where the hierarchy broke
+              down. Then I conducted a competitive analysis of the settings
+              menus in other party games to compare how they grouped and
+              presented options.
             </p>
+            <p>That research gave me three principles:</p>
+            <p><strong>Same structure on every tab.</strong></p>
+            <p><strong>Group by player intent, not by system category.</strong></p>
             <p>
-              Between the audit and that pass, I landed on three principles.
-            </p>
-            <p>
-              <strong>Same form on every tab.</strong> One header pattern, one
-              footer, one grouping logic, and one density.
-            </p>
-            <p>
-              <strong>Group by player intent rather than system category.</strong>
-              A new player should be able to intuitively find the feature
-              they need.
-            </p>
-            <p>
-              <strong>Speak the game's language.</strong> The chunky outlines,
-              category color, and typography the rest of the game already
-              uses, so the menu aesthetically reads as part of the game.
+              <strong>Settings are an extension of your branding.</strong>
             </p>
           </div>
 
           <div class="phase-block">
             <p>
               Autotroph approved the direction, applied the final styling to
-              my structure in-house, and shipped it.
+              my structure, and shipped it.
             </p>
             <video class="case-media-inline case-media-board" src="videos/haunted-heist-preview.mp4"
                    autoplay loop muted playsinline></video>
@@ -227,155 +247,38 @@
         </div>
       </section>
 
-      <!-- PHASE 2 -->
-      <section class="case-row case-phase">
+      <!-- 02 LOBBY ROLE SELECTION -->
+      <section class="case-row case-phase" id="lobby">
         <div class="case-row-title">
-          <span class="phase-eyebrow">Phase 02</span>
-          <h2>The Loading Screen</h2>
+          <span class="phase-eyebrow">02</span>
+          <h2>Lobby Role Selection</h2>
         </div>
         <div class="case-row-body">
-          <p><em>In development.</em></p>
-
           <div class="phase-block">
             <p>
-              In a multiplayer match every player loads at a different speed.
-              Someone is always waiting on a teammate with slower wifi.
+              Players changed roles by clicking arrows instead of choosing a
+              role directly. It slowed down the experience, and the arrows
+              took up space the lobby needed to look less busy.
             </p>
-            <p>
-              <strong>Design problem:</strong> make the wait do something for
-              the player instead of just passing.
-            </p>
-          </div>
-
-          <div class="phase-block">
-            <img class="case-media-inline case-media-board"
-                 src="images/haunted-heist-loading-concept.jpg"
-                 alt="Loading screen concept with space for username, role title, splash art, and a role-specific tip" />
-            <p>
-              I proposed a loading screen with room for the player's username
-              and role title, splash art that sets tone and carries the
-              branding, and tips written for the role you were assigned. A
-              reminder to conserve ammo, for instance, because you never know
-              when you'll need to defend yourself from Tricksters. The screen
-              orients you to your role before the match starts, so time spent
-              waiting is time spent getting ready.
-            </p>
+            <figure class="case-media-inline case-media-board">
+              <img src="images/haunted-heist-lobby-before.jpg"
+                   alt="The original lobby menu, navigating roles with arrows" />
+            </figure>
           </div>
 
           <div class="phase-block">
             <p>
-              The direction is proposed and the piece is in active iteration
-              and development.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- PHASE 3 -->
-      <section class="case-row case-phase">
-        <div class="case-row-title">
-          <span class="phase-eyebrow">Phase 03</span>
-          <h2>The Lobby Menu</h2>
-        </div>
-        <div class="case-row-body">
-          <p><em>Drag-and-drop role selection shipped. Remaining changes in development.</em></p>
-
-          <div class="phase-block">
-            <p>
-              The lobby had two problems that made each other worse. Moving
-              between roles relies on clunky on-screen arrows instead of
-              letting players pick a role directly, which is slower and takes
-              more space than it needs to. The Auto Assign button also sat
-              close enough to the navigation arrows that it could easily
-              cause a misclick.
+              <strong>What I proposed:</strong> The arrows are gone. Every
+              role is visible, and a player drags their character onto the
+              one they want.
             </p>
             <p>
-              <strong>Design problem:</strong> let a player act on what they
-              want in the lobby directly, in a layout that accounts for high
-              player count.
-            </p>
-            <img class="case-media-inline case-media-board"
-                 src="images/haunted-heist-lobby-before.jpg"
-                 alt="The original lobby menu, navigating roles with arrows and an Auto Assign button close to the nav controls" />
-          </div>
-
-          <div class="phase-block">
-            <p>
-              <strong>The direction I dropped.</strong> My first direction had
-              player models lined up, with room for players to emote and have
-              fun while their friends readied up. I decided against it once I
-              brought it back to a constraint from Autotroph: the lobby
-              needed to account for 8 players along with spectators.
-              Visually, this would cause the lobby menu to be very chaotic
-              and cramped. It would also be difficult since head-to-head
-              symmetry was important to Autotroph, since there would always
-              be more Heisters than Tricksters. One side of the screen would
-              be flooded with players, while the Tricksters side would only
-              have 2-3. These constraints pushed me toward direct
-              manipulation.
-            </p>
-          </div>
-
-          <div class="phase-block">
-            <p>
-              <strong>What I proposed.</strong> The arrows are gone. Every
-              role can be selected directly, and a player drags their own
-              character onto the role they want.
-            </p>
-            <p>
-              Hovering another player's character lets you adjust their mic
-              volume from that spot, rather than through settings. Desk
-              research on multiplayer game frustrations kept surfacing the
-              same complaint, that players had no way to raise or lower a
-              specific friend's volume. I built it into the lobby
-              specifically because that's the first place a player would
-              actually notice someone's volume was off, right as the group is
-              forming. Putting it there also kept the fix inside a player's
-              existing flow of starting a match, instead of asking them to
-              dig into settings to solve it.
-            </p>
-            <img class="case-media-inline case-media-board"
-                 src="images/haunted-heist-lobby-mic.jpg"
-                 alt="Hovering another player's character reveals a control to adjust their mic volume" />
-            <p>
-              The crown marking the host moved from beside the role UI to
-              above their head, so it is more obvious. Auto Assign and Ready
-              Up moved out of the middle of the role selection flow, so a
-              misclick no longer disrupts the role selection process.
-            </p>
-          </div>
-
-          <div class="phase-block">
-            <p>
-              <strong>The Leave button.</strong> My reasoning going in was
-              that Leave was ambiguous in this context. It could read as
-              leaving the menu or leaving the match, and a player who
-              interprets it the wrong way drops out of a game they meant to
-              stay in. I proposed removing it from this screen.
-            </p>
-            <p>
-              I ran a moderated test with three users. Every participant left
-              the lobby when they meant to leave the menu. Three for three
-              confirmed the ambiguity was real, but it also changed my
-              conclusion: the fix isn't removing the exit, it's confirmation
-              dialog before it happens. That recommendation is with Autotroph
-              and hasn't been implemented yet.
-            </p>
-            <img class="case-media-inline case-media-board"
-                 src="images/haunted-heist-lobby-leave.jpg"
-                 alt="Reasoning for removing the Leave button and the moderated-test finding that changed the recommendation" />
-          </div>
-
-          <div class="phase-block">
-            <p>
-              <strong>Where it landed.</strong> Autotroph pushed back on part
-              of the direction. They liked most of the proposal, but they
-              wanted to keep the original concept's head-to-head symmetry
-              between Heisters and Tricksters, which my layout had moved away
-              from. We landed on a combined version: their symmetry, my
-              interaction model. The drag-and-drop role selection is in the
-              build. The mic volume control, crown placement, button
-              relocation, and leave confirmation are still in development.
+              <strong>Where it landed:</strong> Autotroph liked the
+              interaction but pushed back on the layout. Mine had dropped
+              the head-to-head symmetry of the opposing teams. That visual
+              layout was crucial for them. So, we combined the two: their
+              head-to-head layout, my drag-and-drop interaction. That version
+              is in the build.
             </p>
             <video class="case-media-inline case-media-board" src="videos/haunted-heist-drag.mp4"
                    autoplay loop muted playsinline></video>
@@ -383,16 +286,21 @@
         </div>
       </section>
 
-      <!-- WHERE IT STANDS -->
-      <section class="case-row">
-        <h2 class="case-row-title">Where it Stands</h2>
+      <!-- REFLECTION -->
+      <section class="case-row" id="reflection">
+        <h2 class="case-row-title">Reflection</h2>
         <div class="case-row-body">
           <p>
-            Haunted Heist releases October 12. The settings menu and
-            drag-and-drop role selection are in the build. The loading screen
-            and the rest of the lobby work are in development. This case
-            study is evolving everyday, I can't wait to show you the progress
-            made at launch! :)
+            Stepping into the gaming space and contributing to Haunted Heist
+            has been such an incredible journey. Working with the small,
+            passionate indie team at Autotroph showed me how thoughtful,
+            user-centered design can elevate player experience. Working
+            closely with a small studio meant every suggestion mattered, and
+            seeing those ideas being taken into consideration and making it
+            into the final build was extraordinarily rewarding.
+            <strong>There is still more to come after launch on October 12,
+            including final screens and further lobby development.</strong>
+            Can't wait to share! :)
           </p>
         </div>
       </section>
@@ -405,8 +313,16 @@
         <span>© 2026 Hannah Hatchett</span>
         <span>Seattle, WA</span>
       </footer>
-  </main>
+    </main>
+  </div>
 
-  <script src="script.js?v=2"></script>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" hidden>
+    <button class="lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+    </button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script src="script.js?v=7"></script>
 </body>
 </html>

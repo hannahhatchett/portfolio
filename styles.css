@@ -1646,7 +1646,7 @@ video.case-media-board {
 /* Near-square capture — full width makes it too tall next to the wider boards */
 video.case-media-board[src*="haunted-heist-preview"] {
   width: auto;
-  max-width: 60%;
+  max-width: 85%;
   margin: 0 auto;
 }
 .case-media-caption {
