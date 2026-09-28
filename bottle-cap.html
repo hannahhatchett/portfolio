@@ -43,65 +43,71 @@
     </div>
   </header>
 
-  <main class="main case-study">
-
-      <!-- Top hero: project title + tagline + metadata -->
-      <section class="case-header reveal">
-        <div class="case-header-main">
-          <h1 class="case-title case-title-brand">
-            <img src="images/bottlecap-title.png" alt="Bottle Cap — a neighborhood hang" />
-          </h1>
+  <!-- Top hero: sits full-width, centered on the page — the nav starts
+       after this, not beside it. -->
+  <section class="case-header main case-study reveal">
+    <div class="case-header-main">
+      <h1 class="case-title case-title-brand">
+        <img src="images/bottlecap-title.png" alt="Bottle Cap — a neighborhood hang" />
+      </h1>
+      <p class="case-tagline">A website redesign and brand direction for a Nashville neighborhood pub</p>
+    </div>
+      <aside class="case-meta">
+        <div class="meta-item">
+          <span class="meta-label">Client</span>
+          <span class="meta-value">Bottle Cap, a pub in downtown Nashville</span>
         </div>
-        <aside class="case-meta">
-          <div class="meta-item">
-            <span class="meta-label">Client</span>
-            <span class="meta-value">Bottle Cap, a pub in downtown Nashville</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Agency</span>
-            <span class="meta-value">Element 47, a branding agency in Nashville, TN</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Role</span>
-            <span class="meta-value">UX Design Intern</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Timeline</span>
-            <span class="meta-value">May – August 2024</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Status</span>
-            <span class="meta-value">Shipped. The live site is the work from this project.</span>
-          </div>
-        </aside>
-      </section>
-
-      <!-- Hero teaser media — click to cycle -->
-      <figure class="case-hero">
-        <div class="case-hero-viewer" role="button" tabindex="0"
-             aria-label="Site screenshot carousel. Click or press arrow keys to advance">
-          <img src="images/bottlecap-home.png"
-               alt="Bottle Cap homepage hero, Welcome to the Neighborhood" class="active" />
-          <img src="images/bottlecap-menu.png"
-               alt="Bottle Cap food menu, Appetizers grid" />
-          <img src="images/bottlecap-location.png"
-               alt="Bottle Cap location section with map and Visit Us details" />
+        <div class="meta-item">
+          <span class="meta-label">Agency</span>
+          <span class="meta-value">Element 47, a branding agency in Nashville, TN</span>
         </div>
-        <button class="hero-nav hero-nav-prev" type="button" aria-label="Previous image">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18" /></svg>
-        </button>
-        <button class="hero-nav hero-nav-next" type="button" aria-label="Next image">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
-        </button>
-        <div class="case-hero-dots" role="tablist" aria-label="Choose image">
-          <button class="dot active" type="button" aria-label="Image 1"></button>
-          <button class="dot" type="button" aria-label="Image 2"></button>
-          <button class="dot" type="button" aria-label="Image 3"></button>
+        <div class="meta-item">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">UX Design Intern</span>
         </div>
-      </figure>
+        <div class="meta-item">
+          <span class="meta-label">Timeline</span>
+          <span class="meta-value">May – August 2024</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">Shipped. The live site is the work from this project.</span>
+        </div>
+      </aside>
+  </section>
 
-      <!-- WHAT IS BOTTLECAP -->
-      <section class="case-row">
+  <!-- Shares the same column math as .case-layout below (so its text
+       lines up with the body content) without containing the nav, which
+       shouldn't appear until "What is Bottle Cap?". -->
+  <div class="case-hero-lead">
+    <div class="case-hero-role">
+      <span class="case-hero-role-label">What I Did</span>
+      <p>
+        I led the Bottle Cap website redesign from discovery through
+        handoff. I studied six Nashville competitors, steered the client
+        away from copying a rival's look toward a brand of their own, and
+        wireframed a five-page site with one consistent navigation. I then
+        handed the design documentation to a contracted UI designer.
+      </p>
+    </div>
+  </div>
+
+  <div class="case-layout">
+    <nav class="case-side-nav" aria-label="Jump to section">
+      <a href="#what">Bottle Cap</a>
+      <a href="#challenge">Challenge</a>
+      <a href="#solution">Solution</a>
+      <a href="#impact">Impact</a>
+      <a href="#discovery">Discovery &amp; research</a>
+      <a href="#brand-direction">Brand direction</a>
+      <a href="#wireframes">Wireframes &amp; handoff</a>
+      <a href="#shipped">What shipped</a>
+    </nav>
+
+    <main class="case-body main case-study case-study-stacked">
+
+      <!-- WHAT -->
+      <section class="case-row" id="what">
         <h2 class="case-row-title">What is Bottle Cap?</h2>
         <div class="case-row-body">
           <p>
@@ -113,9 +119,9 @@
         </div>
       </section>
 
-      <!-- THE CHALLENGE -->
-      <section class="case-row">
-        <h2 class="case-row-title">The Challenge</h2>
+      <!-- CHALLENGE -->
+      <section class="case-row" id="challenge">
+        <h2 class="case-row-title">Challenge</h2>
         <div class="case-row-body">
           <figure class="case-media-inline case-media-scroller"
                   aria-label="Auto scrolling preview of the original Bottle Cap website">
@@ -137,52 +143,39 @@
         </div>
       </section>
 
-      <!-- THE SOLUTION -->
-      <section class="case-row">
-        <h2 class="case-row-title">The Solution</h2>
+      <!-- SOLUTION -->
+      <section class="case-row" id="solution">
+        <h2 class="case-row-title">Solution</h2>
         <div class="case-row-body">
           <p>
             A five-page site with one navigation, a page each for menu,
             specials, events, and location, and a brand direction that
-            belonged to Bottle Cap instead of a competitor. I ran research,
-            set the direction, and drew the wireframes, then handed off to a
-            contracted UI designer.
+            belonged to Bottle Cap instead of a competitor.
           </p>
         </div>
       </section>
 
-      <!-- THE OUTCOME -->
-      <section class="case-row">
-        <h2 class="case-row-title">The Outcome</h2>
+      <!-- IMPACT -->
+      <section class="case-row" id="impact">
+        <h2 class="case-row-title">Impact</h2>
         <div class="case-row-body">
           <p>
-            The site launched at the end of my internship with every
-            structural problem from discovery fixed: consistent navigation, a
-            responsive menu, a mapped location, and a brand that holds across
-            every page.
+            Guests can now easily and quickly find various needs, including:
+            specials, events, menu, hours, and location. The client got a
+            brand of their own instead of a competitor's, and the direction
+            carried through launch after my internship ended.
           </p>
-
-          <div class="case-stats case-stats-3">
-            <div class="stat-item">
-              <span class="stat-number">6</span>
-              <span class="stat-desc">Nashville competitors analyzed</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">5</span>
-              <span class="stat-desc">core pages: home, menu, specials, events, location</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">1</span>
-              <span class="stat-desc">intern, discovery through handoff</span>
-            </div>
-          </div>
         </div>
       </section>
 
-      <!-- PHASE 1 -->
-      <section class="case-row case-phase">
+      <div class="case-divider" role="separator">
+        <span>How We Got There</span>
+      </div>
+
+      <!-- 01 DISCOVERY & RESEARCH -->
+      <section class="case-row case-phase" id="discovery">
         <div class="case-row-title">
-          <span class="phase-eyebrow">Phase 01</span>
+          <span class="phase-eyebrow">01</span>
           <h2>Discovery &amp; Research</h2>
         </div>
         <div class="case-row-body">
@@ -219,10 +212,10 @@
         </div>
       </section>
 
-      <!-- PHASE 2 -->
-      <section class="case-row case-phase">
+      <!-- 02 BRAND DIRECTION -->
+      <section class="case-row case-phase" id="brand-direction">
         <div class="case-row-title">
-          <span class="phase-eyebrow">Phase 02</span>
+          <span class="phase-eyebrow">02</span>
           <h2>Brand Direction &amp; Client Advocacy</h2>
         </div>
         <div class="case-row-body">
@@ -259,10 +252,10 @@
         </div>
       </section>
 
-      <!-- PHASE 3 -->
-      <section class="case-row case-phase">
+      <!-- 03 WIREFRAMES & HANDOFF -->
+      <section class="case-row case-phase" id="wireframes">
         <div class="case-row-title">
-          <span class="phase-eyebrow">Phase 03</span>
+          <span class="phase-eyebrow">03</span>
           <h2>Wireframes &amp; Handoff</h2>
         </div>
         <div class="case-row-body">
@@ -322,7 +315,7 @@
       </section>
 
       <!-- WHAT SHIPPED -->
-      <section class="case-row">
+      <section class="case-row" id="shipped">
         <h2 class="case-row-title">What Shipped</h2>
         <div class="case-row-body">
           <p>
@@ -403,8 +396,16 @@
         <span>© 2026 Hannah Hatchett</span>
         <span>Seattle, WA</span>
       </footer>
-  </main>
+    </main>
+  </div>
 
-  <script src="script.js?v=2"></script>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" hidden>
+    <button class="lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+    </button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script src="script.js?v=7"></script>
 </body>
 </html>
