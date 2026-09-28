@@ -27,7 +27,7 @@
   // DESIGN_W and is scaled by the same factor, so vertical rhythm tracks too.
   const NODES = [
     {
-      name: "Optimizely",
+      name: "Optimizely OnRamp",
       tags: ["UX", "B2B SaaS", "Completed"],
       blurb: "A new case study is in the works — check back soon.",
       img: "images/optimizely-home-card.jpg", href: "optimizely.html", bg: "#b9c79a",

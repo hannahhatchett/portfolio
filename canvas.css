@@ -239,7 +239,7 @@
   font-weight: 500;
   letter-spacing: -0.01em;
 }
-.cv-node-labels .l { color: var(--cv-ink); }
+.cv-node-labels .l { color: var(--cv-ink); font-size: 17px; font-weight: 600; }
 /* Name brightens when its card is the expanded one */
 .cv-node.is-active .cv-node-labels .l { color: var(--cv-wire); }
 .cv-card {
